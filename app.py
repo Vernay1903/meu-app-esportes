@@ -6,11 +6,12 @@ st.set_page_config(page_title="Corte dos Esportes", layout="wide", page_icon="�
 # Banner Principal
 st.image("Captura de tela 2026-01-08 092841.png", use_container_width=True)
 
-# Lista de Esportes em Ordem Alfabética
+# Lista de Esportes em Ordem Alfabética (Atualizada!)
 lista_esportes = [
     "Artes Marciais (UFC)", "Automobilismo", "Basquete", "Boxe", 
-    "Ciclismo", "Futebol", "Futsal", "Handebol", "Natação", 
-    "Skate", "Surfe", "Tênis", "Vôlei", "Vôlei de Praia"
+    "Ciclismo", "Esportes Olímpicos", "Futebol", "Futebol Americano", 
+    "Futsal", "Handebol", "Natação", "Skate", "Surfe", "Tênis", 
+    "Vôlei", "Vôlei de Praia"
 ]
 
 # Barra Lateral
@@ -23,14 +24,15 @@ st.subheader(f"Análise e Destaques: {esporte}")
 st.write("---")
 
 # Dicionário de Vídeos Dinâmicos
-# Você pode atualizar esses links com os seus cortes favoritos!
 videos = {
     "Artes Marciais (UFC)": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
     "Automobilismo": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
     "Basquete": "https://www.youtube.com/watch?v=9_pYvYmP1Xg",
     "Boxe": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
     "Ciclismo": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+    "Esportes Olímpicos": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
     "Futebol": "https://www.youtube.com/watch?v=9Is976o_TMc",
+    "Futebol Americano": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
     "Futsal": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
     "Handebol": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
     "Natação": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
@@ -41,7 +43,7 @@ videos = {
     "Vôlei de Praia": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
 }
 
-# Exibição do Vídeo Baseado na Escolha
+# Exibição do Vídeo
 st.markdown(f"### 📺 Últimos Cortes de {esporte}")
 st.video(videos.get(esporte, "https://www.youtube.com/watch?v=dQw4w9WgXcQ")) 
 
