@@ -1,22 +1,23 @@
-Excelente, incluí o **Atletismo** e uma categoria geral para **Esportes Olímpicos**. Com isso, a tua lista fica ainda mais completa para a busca dos utilizadores.
+import streamlit as st
 
-Aqui tens a lista final organizada por ordem alfabética para o teu código:
+# Configuração da página
+st.set_page_config(page_title="Meu App de Esportes", layout="wide")
 
-1. **Atletismo** (Adicionado)
-2. Automobilismo
-3. Basquete
-4. Boxe
-5. Ciclismo
-6. **Esportes Olímpicos** (Adicionado)
-7. Futebol
-8. Futebol Americano
-9. Ginástica
-10. Lutas (MMA/UFC)
-11. Skate
-12. Surf
-13. Tênis
-14. Vôlei
+# Banner Principal
+st.image("https://images.unsplash.com/photo-1461896836934-ffe607ba8211?q=80&w=2070&auto=format&fit=crop", use_container_width=True)
 
-Já podes atualizar o teu arquivo `app.py` com esta nova lista no bloco de código da "Busca Rápida".
+st.title("🏆 Portal de Esportes")
+st.write("Bem-vindo ao seu guia alfabético de modalidades esportivas!")
 
-**Como correu o processo de publicação no Streamlit Cloud? Já conseguiste ver o app no teu telemóvel?**
+# Lista de Esportes
+esportes = [
+    "Atletismo", "Basquete", "Ciclismo", "Esportes Olímpicos", 
+    "Futebol", "Ginástica", "Handebol", "Judô", "Karatê", 
+    "Natação", "Surfe", "Tênis", "Vôlei"
+]
+
+# Criando a interface
+escolha = st.selectbox("Selecione um esporte para saber mais:", sorted(esportes))
+
+st.info(f"Você selecionou: **{escolha}**")
+st.write("Em breve, traremos mais detalhes sobre esta modalidade!")
