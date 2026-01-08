@@ -6,72 +6,71 @@ st.set_page_config(page_title="Corte dos Esportes", layout="wide")
 # 2. BANNER PRINCIPAL
 try:
     st.image("banner.jpg.png", use_container_width=True)
-except Exception:
+except:
     st.title("✂️ Corte dos Esportes")
 
 st.write("---")
 
-# 3. DICIONÁRIO DE CONTEÚDO (Notícias em vez de Vídeos)
-# Aqui você pode atualizar as notícias de cada esporte individualmente
-conteudo_esportes = {
+# 3. BANCO DE DADOS COMPLETO (Notícias para todos os 14 esportes)
+conteudo = {
     "🥊 Artes Marciais (UFC)": {
-        "titulo": "Poatan confirma defesa de cinturão para 2026",
-        "texto": "O campeão brasileiro Alex Poatan anunciou que já tem data para voltar ao octógono. Especialistas apontam que este será o maior desafio da sua carreira até agora.",
-        "imagem": "https://images.unsplash.com/photo-1595078475328-1ab05d0a6a0e?w=800",
+        "titulo": "Poatan mira novo cinturão histórico",
+        "texto": "O campeão brasileiro segue quebrando recordes e planeja subir de categoria para buscar o terceiro cinturão em 2026.",
+        "img": "https://images.unsplash.com/photo-1595078475328-1ab05d0a6a0e?w=800",
         "video": "https://www.youtube.com/watch?v=2S69v8X9X4c"
     },
-    "⚽ Futebol": {
-        "titulo": "Mercado da Bola: Estrela europeia a caminho do Brasil?",
-        "texto": "Rumores indicam que um grande atacante da Premier League está em negociações avançadas para reforçar um clube da Série A na próxima janela de transferências.",
-        "imagem": "https://images.unsplash.com/photo-1508098682722-e99c43a406b2?w=800",
-        "video": "https://www.youtube.com/watch?v=ra6ZalwC19c"
+    "🏃 Atletismo": {
+        "titulo": "Promessas do Atletismo brilham nos treinos",
+        "texto": "A nova geração de velocistas apresenta tempos impressionantes e promete pódios nas próximas competições mundiais.",
+        "img": "https://images.unsplash.com/photo-1526676037777-05a232554f77?w=800",
+        "video": "https://www.youtube.com/watch?v=19JpUAtX-pM"
+    },
+    "🏎️ Automobilismo": {
+        "titulo": "F1: Mudanças técnicas prometem mais velocidade",
+        "texto": "As novas regulamentações de aerodinâmica devem tornar as ultrapassagens mais frequentes e as corridas mais emocionantes.",
+        "img": "https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=800",
+        "video": "https://www.youtube.com/watch?v=MIsunv9vW6I"
     },
     "🏀 Basquete": {
-        "titulo": "NBA: Recorde histórico batido em Los Angeles",
-        "texto": "A noite de ontem entrou para a história do basquete mundial com uma performance nunca antes vista. O ginásio veio abaixo com o último arremesso.",
-        "imagem": "https://images.unsplash.com/photo-1546519638-68e109498ffc?w=800",
+        "titulo": "NBA: Play-offs pegam fogo com duelos de gigantes",
+        "texto": "A disputa pela conferência oeste está mais acirrada do que nunca, com times empatados na liderança na reta final.",
+        "img": "https://images.unsplash.com/photo-1546519638-68e109498ffc?w=800",
         "video": "https://www.youtube.com/watch?v=9_pYvYmP1Xg"
-    }
-}
-
-# 4. BARRA LATERAL (Menu)
-st.sidebar.image("https://cdn-icons-png.flaticon.com/512/857/857418.png", width=80)
-escolha = st.sidebar.radio("Escolha a categoria:", list(conteudo_esportes.keys()))
-
-st.sidebar.write("---")
-st.sidebar.subheader("📖 Sobre o Corte")
-st.sidebar.info("As principais notícias e lances do mundo esportivo em um só lugar.")
-
-# 5. EXIBIÇÃO DA NOTÍCIA SELECIONADA
-if escolha in conteudo_esportes:
-    dados = conteudo_esportes[escolha]
-    
-    st.header(f"🔥 {escolha}")
-    
-    # Layout da Notícia
-    col_img, col_txt = st.columns([1, 1])
-    
-    with col_img:
-        st.image(dados["imagem"], use_container_width=True)
-    
-    with col_txt:
-        st.subheader(dados["titulo"])
-        st.write(dados["texto"])
-        st.button(f"Ler mais sobre {escolha}", key=f"btn_{escolha}")
-
-    st.write("---")
-    
-    # O vídeo agora entra como um "Bônus" abaixo da notícia escrita
-    with st.expander("📺 Assistir lances em vídeo"):
-        st.video(dados["video"])
-        st.caption("Nota: Alguns vídeos podem ser bloqueados para reprodução externa pelo YouTube.")
-
-# 6. RODAPÉ - PLANTÃO
-st.write("---")
-st.subheader("🚨 Plantão Corte dos Esportes")
-st.error("**ÚLTIMA HORA:** Ingressos para a final da Copa do Mundo começam a ser vendidos amanhã!")
-
-st.markdown("<br><center><p style='color: gray;'>© 2026 Corte dos Esportes - Monetizado com Notícias</p></center>", unsafe_allow_html=True)
+    },
+    "🏅 Esportes Olímpicos": {
+        "titulo": "Brasil amplia investimento em esportes de base",
+        "texto": "Com foco no próximo ciclo olímpico, novos centros de treinamento de alto rendimento estão sendo inaugurados.",
+        "img": "https://images.unsplash.com/photo-1562077772-3bd30422f7e8?w=800",
+        "video": "https://www.youtube.com/watch?v=VabT_M_n2O8"
+    },
+    "⚽ Futebol": {
+        "titulo": "Janela de transferências movimenta o mercado",
+        "texto": "Clubes brasileiros e europeus iniciam negociações milionárias para reforçar seus elencos para a próxima temporada.",
+        "img": "https://images.unsplash.com/photo-1508098682722-e99c43a406b2?w=800",
+        "video": "https://www.youtube.com/watch?v=ra6ZalwC19c"
+    },
+    "🏈 Futebol Americano": {
+        "titulo": "NFL: Estratégias inovadoras dominam a liga",
+        "texto": "Novos esquemas ofensivos estão desafiando as defesas mais sólidas, resultando em placares históricos e muita emoção.",
+        "img": "https://images.unsplash.com/photo-1566577739112-5180d4bf9390?w=800",
+        "video": "https://www.youtube.com/watch?v=07mBfR8erMY"
+    },
+    "🤾 Handebol": {
+        "titulo": "Seleção Brasileira inicia preparação para o Mundial",
+        "texto": "Com uma mistura de atletas experientes e jovens talentos, o Brasil busca surpreender as potências europeias.",
+        "img": "https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=800",
+        "video": "https://www.youtube.com/watch?v=uXvS9G9S8S4"
+    },
+    "🛹 Skate": {
+        "titulo": "Skate Street: Brasileiros dominam ranking mundial",
+        "texto": "Nossos atletas continuam sendo referência técnica e estilo, conquistando pódios nas etapas internacionais mais importantes.",
+        "img": "https://images.unsplash.com/photo-1520156582985-31368ba59c95?w=800",
+        "video": "https://www.youtube.com/watch?v=2p8N_8F9XmI"
+    },
+    "🏄 Surfe": {
+        "titulo": "WCT: Próxima etapa promete ondas gigantes",
+        "texto": "A elite do surfe mundial se prepara para condições extremas em uma das paradas mais icônicas do circuito.",
+        "img": "https://images.unsplash.com/photo-1502680390469-be75c86b636f?w=800",
 
 
 
