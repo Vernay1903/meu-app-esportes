@@ -8,7 +8,8 @@ st.set_page_config(page_title="Corte dos Esportes", layout="wide", page_icon="�
 # 2. Dicionário com Histórico (14 categorias em ordem alfabética)
 # Para adicionar mais vídeos, basta colocar uma vírgula dentro dos colchetes []
 esportes = {
-    "🥊 Artes Marciais (UFC)": "https://www.youtube.com/watch?v=SEU_VIDEO_NOVO_1", 
+    "🥊 Artes Marciais (UFC)": "🥊 Artes Marciais (UFC)": [
+        "https://www.youtube.com/watch?v=SEU_VIDEO_NOVO_1", 
         "https://www.youtube.com/watch?v=VIDEO_ANTIGO_OU_HISTORICO"
     "🏃 Atletismo": ["https://www.youtube.com/watch?v=dQw4w9WgXcQ"],
     "🏎️ Automobilismo": ["https://www.youtube.com/watch?v=dQw4w9WgXcQ"],
