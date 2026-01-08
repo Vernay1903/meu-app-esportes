@@ -1,18 +1,22 @@
 import streamlit as st
+import os
 
 # 1. Configuração da Aba
 st.set_page_config(page_title="Corte dos Esportes", layout="wide")
 
-# 2. BANNER PRINCIPAL
-# Tente carregar localmente, se falhar, exibe apenas o título para o app não travar
-try:
-    st.image("Captura de tela 2026-01-08 092841.jpg", use_container_width=True)
-except Exception:
+# 2. EXIBIÇÃO DO BANNER (Com verificação de erro)
+nome_arquivo_imagem = "banner.jpg" 
+
+if os.path.exists(nome_arquivo_imagem):
+    st.image(nome_arquivo_imagem, use_container_width=True)
+else:
+    # Se a imagem sumir ou der erro, ele mostra o título em texto para não quebrar o site
     st.markdown("# ✂️ Corte dos Esportes")
+    st.warning("⚠️ Arquivo 'banner.jpg' não encontrado no GitHub. Verifique o nome do arquivo.")
 
 st.write("---")
 
-# 3. DICIONÁRIO ORGANIZADO (Ordem Alfabética)
+# 3. DICIONÁRIO ORGANIZADO (Ordem Alfabética Correta)
 esportes = {
     "🥊 Artes Marciais (UFC)": "https://www.youtube.com/watch?v=F3Fv_rR8G-0",
     "🏃 Atletismo": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
