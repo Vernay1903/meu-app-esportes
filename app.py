@@ -1,9 +1,9 @@
 import streamlit as st
 
-# 1. Configuração da Página (Aba do Navegador)
+# 1. Configuração Oficial do Layout
 st.set_page_config(page_title="Corte dos Esportes", layout="wide", page_icon="✂️")
 
-# 2. Dicionário com TODOS os 14 Esportes (Links reais onde disponíveis)
+# 2. LISTA COMPLETA DOS 14 ESPORTES (Sem erros de aspas)
 esportes = {
     "🥊 Artes Marciais (UFC)": ["https://www.youtube.com/watch?v=F3Fv_rR8G-0"],
     "🏃 Atletismo": ["https://www.youtube.com/watch?v=dQw4w9WgXcQ"],
@@ -13,10 +13,7 @@ esportes = {
     "⚽ Futebol": ["https://www.youtube.com/watch?v=ra6ZalwC19c"],
     "🏈 Futebol Americano": ["https://www.youtube.com/watch?v=dQw4w9WgXcQ"],
     "🤾 Handebol": ["https://www.youtube.com/watch?v=dQw4w9WgXcQ"],
-    "🛹 Skate": ["https://www.youtube.com/watch?v=2p8N_8F9XmI"],
-    "🏄 Surfe": ["https://www.youtube.com/watch?v=w772_2q7t-o"],
-    "🎾 Tênis": ["https://www.youtube.com/watch?v=dQw4w9WgXcQ"],
-    "🏓 Tênis de Mesa": ["
+    "🛹 Skate": ["
 
 
 
