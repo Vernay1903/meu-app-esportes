@@ -1,5 +1,7 @@
 import streamlit as st
 
+st.set_page_config(page_title="Corte dos Esportes", layout="wide", page_icon="✂️")
+
 # 1. Configuração da página
 st.set_page_config(page_title="Corte dos Esportes", layout="wide", page_icon="✂️")
 
