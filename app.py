@@ -1,9 +1,13 @@
 import streamlit as st
 
-# 1. Configuração principal (Título na aba do navegador)
+# 1. TÍTULO NO TOPO E CONFIGURAÇÃO
 st.set_page_config(page_title="Corte dos Esportes", layout="wide", page_icon="✂️")
 
-# 2. LISTA DE VÍDEOS (Adicione novos links dentro dos colchetes)
+# Estilo para garantir que o título apareça de forma limpa
+st.markdown("# ✂️ Corte dos Esportes")
+st.write("---")
+
+# 2. DICIONÁRIO DE VÍDEOS (Organizado)
 esportes = {
     "🥊 Artes Marciais (UFC)": [
         "https://www.youtube.com/watch?v=F3Fv_rR8G-0"
@@ -25,7 +29,7 @@ esportes = {
     ]
 }
 
-# 3. BARRA LATERAL (Menu e Texto Sobre Nós)
+# 3. BARRA LATERAL (Menu e Texto corrigido)
 st.sidebar.image("https://cdn-icons-png.flaticon.com/512/857/857418.png", width=100)
 st.sidebar.title("📌 NAVEGAÇÃO:")
 escolha = st.sidebar.radio("Escolha o esporte:", list(esportes.keys()))
@@ -34,25 +38,8 @@ st.sidebar.write("---")
 st.sidebar.subheader("📖 Sobre Nós")
 st.sidebar.info("Somos apaixonados por esportes, aqui você acompanha seu esporte favorito e quem sabe pode virar fã de outro esporte")
 
-# 4. ÁREA DO VÍDEO (Onde o conteúdo aparece)
-st.title(f"{escolha}")
-st.subheader("🔥 Último Corte")
-
-# Pega os vídeos da categoria escolhida
-lista_videos = esportes[escolha]
-
-if lista_videos:
-    # Mostra o vídeo principal (o primeiro da lista)
-    st.video(lista_videos[0])
-
-    # Se tiver mais vídeos, mostra abaixo como histórico
-    if len(lista_videos) > 1:
-        st.write("---")
-        st.subheader("📜 Histórico de Vídeos")
-        cols = st.columns(2)
-        for i, vid in enumerate(lista_videos[1:]):
-            with cols[i % 2]:
-                st.video(vid)
+# 4. EXIBIÇÃO DO VÍDEO
+st.header(f"{escolha}")
 
 
 
