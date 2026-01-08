@@ -24,8 +24,8 @@ outros = ["🏅 Esportes Olímpicos", "🏈 Futebol Americano", "🤾 Handebol",
 for item in outros:
     conteudo[item] = {"titulo": f"Destaques de {item}", "texto": f"Acompanhe os resultados e as notícias de {item}."}
 
-# 4. BARRA LATERAL (Ajustada)
-st.sidebar.markdown("### 🗓️ Agenda do Dia") # Agenda que você gostou
+# 4. BARRA LATERAL (Ajustada com a frase correta)
+st.sidebar.markdown("### 🗓️ Agenda do Dia") # Agenda que você aprovou
 st.sidebar.write("• **20h:** Final de Conferência (NBA)")
 st.sidebar.write("• **21h30:** Copa Libertadores")
 
@@ -36,10 +36,11 @@ escolha = st.sidebar.radio("Navegue pelas notícias:", list(conteudo.keys()))
 
 st.sidebar.write("---")
 
-# CORREÇÃO DO "SOBRE NÓS" - Escreva sua frase entre as aspas abaixo
+# SEÇÃO SOBRE O CORTE (Texto corrigido e sem quebras)
 st.sidebar.markdown("### 📖 Sobre o Corte")
-frase_personalizada = "SUA FRASE AQUI - ESCREVA O TEXTO QUE DESEJA QUE APAREÇA SEM CORTES"
-st.sidebar.write(frase_personalizada)
+# Frase exata solicitada por você
+frase_site = "Criado para os apaixonados por esportes ficarem atualizados, com as noticias mais recentes."
+st.sidebar.write(frase_site)
 
 # 5. EXIBIÇÃO DA NOTÍCIA
 dados = conteudo[escolha]
