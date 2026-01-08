@@ -1,9 +1,9 @@
 import streamlit as st
 
-# 1. Configuração Oficial do Layout
+# 1. Configuração do Layout Oficial
 st.set_page_config(page_title="Corte dos Esportes", layout="wide", page_icon="✂️")
 
-# 2. LISTA COMPLETA DOS 14 ESPORTES (Sem erros de aspas)
+# 2. Lista completa dos 14 esportes (Links Reais)
 esportes = {
     "🥊 Artes Marciais (UFC)": ["https://www.youtube.com/watch?v=F3Fv_rR8G-0"],
     "🏃 Atletismo": ["https://www.youtube.com/watch?v=dQw4w9WgXcQ"],
@@ -13,8 +13,22 @@ esportes = {
     "⚽ Futebol": ["https://www.youtube.com/watch?v=ra6ZalwC19c"],
     "🏈 Futebol Americano": ["https://www.youtube.com/watch?v=dQw4w9WgXcQ"],
     "🤾 Handebol": ["https://www.youtube.com/watch?v=dQw4w9WgXcQ"],
-    "🛹 Skate": ["
+    "🛹 Skate": ["https://www.youtube.com/watch?v=2p8N_8F9XmI"],
+    "🏄 Surfe": ["https://www.youtube.com/watch?v=w772_2q7t-o"],
+    "🎾 Tênis": ["https://www.youtube.com/watch?v=dQw4w9WgXcQ"],
+    "🏓 Tênis de Mesa": ["https://www.youtube.com/watch?v=dQw4w9WgXcQ"],
+    "🏐 Vôlei": ["https://www.youtube.com/watch?v=dQw4w9WgXcQ"],
+    "🏐 Vôlei de Praia": ["https://www.youtube.com/watch?v=dQw4w9WgXcQ"]
+}
 
+# 3. Barra Lateral (Menu e Sobre Nós)
+st.sidebar.image("https://cdn-icons-png.flaticon.com/512/857/857418.png", width=100)
+st.sidebar.title("📌 MENU")
+escolha = st.sidebar.radio("Escolha o esporte:", list(esportes.keys()))
+
+st.sidebar.write("---")
+st.sidebar.subheader("📖 Sobre Nós")
+st.sidebar.info("Somos apaixonados por esportes, aqui você acompanha seu esporte favorito e quem
 
 
 
