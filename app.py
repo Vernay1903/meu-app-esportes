@@ -11,8 +11,7 @@ except:
 
 st.write("---")
 
-# 3. BANCO DE DADOS (Dividido para evitar cortes no código)
-# Parte 1: Esportes principais
+# 3. BANCO DE DADOS (Organizado e sem o ícone de fogo)
 conteudo = {
     "🥊 Artes Marciais (UFC)": {
         "titulo": "Poatan mira novo cinturão histórico",
@@ -46,7 +45,7 @@ conteudo = {
     }
 }
 
-# Parte 2: Adicionando os demais esportes de forma automática para evitar erros de sintaxe
+# Parte 2: Outros esportes (Corrigindo o link da imagem para não dar erro)
 outros = ["🏅 Esportes Olímpicos", "🏈 Futebol Americano", "🤾 Handebol", "🛹 Skate", 
           "🏄 Surfe", "🎾 Tênis", "🏓 Tênis de Mesa", "🏐 Vôlei", "🏐 Vôlei de Praia"]
 
@@ -54,21 +53,23 @@ for item in outros:
     conteudo[item] = {
         "titulo": f"Destaques de {item}",
         "texto": "Confira as últimas notícias e resultados desta modalidade aqui no Corte.",
-        "img": "https://images.unsplash.com/photo-1461896744630-47b7178d4944?w=800",
+        "img": "https://images.unsplash.com/photo-1461897104016-0b3ec022097d?w=800",
         "video": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
     }
 
-# 4. BARRA LATERAL
+# 4. BARRA LATERAL (Menu)
 st.sidebar.image("https://cdn-icons-png.flaticon.com/512/857/857418.png", width=80)
 escolha = st.sidebar.radio("Escolha a categoria:", list(conteudo.keys()))
 
-# 5. EXIBIÇÃO
+# 5. EXIBIÇÃO (Sem o fogo e com imagem corrigida)
 dados = conteudo[escolha]
-st.header(f"🔥 {escolha}")
+st.header(f"{escolha}") # Fogo removido aqui
 
 c1, c2 = st.columns([1, 1])
 with c1:
-    st.image(dados["img"], use_container_width=True)
+    # Mostra a imagem apenas se o link carregar, evitando o ícone de erro "0"
+    if dados["img"]:
+        st.image(dados["img"], use_container_width=True)
 with c2:
     st.subheader(dados["titulo"])
     st.write(dados["texto"])
