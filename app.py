@@ -1,10 +1,10 @@
 import streamlit as st
 import urllib.parse
 
-# 1. Configuração do Layout
+# 1. Configuração de Layout
 st.set_page_config(page_title="Corte dos Esportes", layout="wide")
 
-# 2. Cabeçalho
+# 2. Banner Principal
 try:
     st.image("banner.jpg.png", use_container_width=True)
 except:
@@ -12,50 +12,54 @@ except:
 
 st.write("---")
 
-# 3. Banco de Dados com TODOS os seus esportes (Sem o item "Outros")
+# 3. Banco de Dados com TODOS os esportes (Organizado internamente)
 noticias = {
-    "🥊 Artes Marciais (UFC)": {"titulo": "Alex Poatan confirma mudança para os Pesos-Pesados", "texto": "O campeão brasileiro revelou que iniciou o processo de ganho de massa para desafiar o topo da categoria no final de 2026."},
-    "🏃 Atletismo": {"titulo": "Recordes mundiais superados", "texto": "A nova temporada de atletismo começa com marcas históricas na pista internacional."},
-    "🏎️ Automobilismo": {"titulo": "F1: Inovações Técnicas", "texto": "Novos carros prometem mais disputas e ultrapassagens na próxima temporada."},
-    "🏀 Basquete": {"titulo": "NBA: Astro marca 50 pontos e quebra recorde", "texto": "Uma performance dominante garantiu a vitória e colocou o time como o principal favorito."},
-    "🏅 Esportes Olímpicos": {"titulo": "Preparação para o ciclo 2028", "texto": "Atletas brasileiros intensificam treinos para as próximas competições mundiais."},
-    "⚽ Futebol": {"titulo": "Mercado da Bola: Estrela europeia no radar", "texto": "Um craque internacional sinalizou interesse em retornar ao Brasil, agitando os bastidores."},
-    "🏈 Futebol Americano": {"titulo": "NFL: Draft movimenta equipes", "texto": "As novas escolhas prometem mudar o equilíbrio de forças na liga este ano."},
-    "🤾 Handebol": {"titulo": "Final do campeonato nacional", "texto": "Um duelo emocionante definiu o grande campeão desta temporada competitiva."},
-    "🛹 Skate": {"titulo": "Circuito mundial em destaque", "texto": "Manobras incríveis marcam a etapa brasileira do mundial de skate."},
-    "🏄 Surfe": {"titulo": "WCT: Ondas gigantes no Hawaii", "texto": "Os melhores surfistas do mundo enfrentam condições extremas nas praias havaianas."},
-    "🎾 Tênis": {"titulo": "Grand Slam: Favoritos avançam", "texto": "As quadras recebem os maiores astros da atualidade para o torneio de elite."},
-    "🏓 Tênis de Mesa": {"titulo": "Destaques do ranking mundial", "texto": "Brasileiros sobem posições e incomodam a elite do esporte mundial."},
-    "🏐 Vôlei": {"titulo": "Superliga: Duelos decisivos", "texto": "A fase final da Superliga promete jogos eletrizantes para a torcida brasileira."},
-    "🏐 Vôlei de Praia": {"titulo": "Circuito na areia", "texto": "As duplas brasileiras dominam as competições internacionais nas areias mundiais."}
+    "⚽ Futebol": {"titulo": "Mercado da Bola: Estrela europeia no radar", "texto": "Um craque internacional sinalizou interesse em retornar ao Brasil."},
+    "🏀 Basquete": {"titulo": "NBA: Astro marca 50 pontos e quebra recorde", "texto": "Uma performance dominante garantiu a vitória na noite de ontem."},
+    "🏎️ Automobilismo": {"titulo": "F1: Inovações Técnicas", "texto": "Novos carros prometem mais disputas e ultrapassagens."},
+    "🥊 Artes Marciais (UFC)": {"titulo": "Alex Poatan confirma mudança para os Pesos-Pesados", "texto": "O campeão brasileiro revelou o processo de ganho de massa para 2026."},
+    "🏐 Vôlei": {"titulo": "Superliga: Duelos decisivos", "texto": "A fase final promete jogos eletrizantes para a torcida."},
+    "🏅 Esportes Olímpicos": {"titulo": "Preparação para o ciclo 2028", "texto": "Atletas brasileiros intensificam treinos para as próximas competições."},
+    "🏈 Futebol Americano": {"titulo": "NFL: Draft movimenta equipes", "texto": "As novas escolhas prometem mudar o equilíbrio de forças na liga."},
+    "🤾 Handebol": {"titulo": "Final do campeonato nacional", "texto": "Um duelo emocionante definiu o grande campeão desta temporada."},
+    "🛹 Skate": {"titulo": "Circuito mundial em destaque", "texto": "Manobras incríveis marcam a etapa brasileira do mundial."},
+    "🏄 Surfe": {"titulo": "WCT: Ondas gigantes no Hawaii", "texto": "Os melhores surfistas do mundo enfrentam condições extremas."},
+    "🎾 Tênis": {"titulo": "Grand Slam: Favoritos avançam", "texto": "As quadras recebem os maiores astros da atualidade."},
+    "🏓 Tênis de Mesa": {"titulo": "Destaques do ranking mundial", "texto": "Brasileiros sobem posições e incomodam a elite mundial."},
+    "🏃 Atletismo": {"titulo": "Recordes mundiais superados", "texto": "A nova temporada de atletismo começa com marcas históricas."},
+    "🏐 Vôlei de Praia": {"titulo": "Circuito na areia", "texto": "As duplas brasileiras dominam as competições internacionais."}
 }
 
-# 4. Barra Lateral (Layout Corrigido)
+# 4. BARRA LATERAL (Layout Idêntico à Foto 1)
 
-# Agenda (Lista fixa e limpa)
+# Agenda do Dia (Texto simples no topo)
 st.sidebar.markdown("### 🗓️ Agenda do Dia")
 st.sidebar.write("• **19h00:** Superliga de Vôlei")
 st.sidebar.write("• **21h30:** Copa Libertadores")
 
 st.sidebar.write("---")
 
-# Menu de Notícias (Radio organizado de A a Z)
+# Menu de Notícias (Radio com Ordem Alfabética Forçada)
 st.sidebar.markdown("### 📰 Notícias")
-st.sidebar.write("**Navegue pelos esportes:**")
+st.sidebar.write("**Navegue pelas notícias:**")
 
-# ESTA LINHA ORGANIZA TUDO DE A A Z AUTOMATICAMENTE
-opcoes_alfabetica = sorted(list(noticias.keys()))
+# VALIDAÇÃO: Criando a lista alfabética antes de exibir o radio
+lista_ordenada = sorted(list(noticias.keys()))
 
-# Uso do Radio (Sem Selectbox)
-escolha = st.sidebar.radio("Categorias:", opcoes_alfabetica, label_visibility="collapsed")
+# Exibição via Radio (Bolinhas) e SEM Selectbox
+escolha = st.sidebar.radio(
+    "Categorias", 
+    lista_ordenada, 
+    label_visibility="collapsed"
+)
 
 st.sidebar.write("---")
 
 # Sobre Nós
 st.sidebar.markdown("### 📖 Sobre Nós")
-st.sidebar.write("Criado para os apaixonados por esportes ficarem atualizados, com as notícias mais recentes sobre todos os esportes.")
+st.sidebar.write("Criado para os apaixonados por esportes ficarem atualizados, com as notícias mais recentes.")
 
-# 5. Conteúdo Central
+# 5. Conteúdo Principal
 dados = noticias[escolha]
 st.header(f"{escolha}")
 st.subheader(dados["titulo"])
