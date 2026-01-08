@@ -3,12 +3,16 @@ import streamlit as st
 # 1. Configuração da Aba
 st.set_page_config(page_title="Corte dos Esportes", layout="wide")
 
-# 2. BANNER PRINCIPAL (A imagem que você enviou)
-# Certifique-se de que o arquivo da imagem esteja na mesma pasta do seu script .py
-st.image("Captura de tela 2026-01-08 092841.jpg", use_container_width=True)
+# 2. BANNER PRINCIPAL
+# Tente carregar localmente, se falhar, exibe apenas o título para o app não travar
+try:
+    st.image("Captura de tela 2026-01-08 092841.jpg", use_container_width=True)
+except Exception:
+    st.markdown("# ✂️ Corte dos Esportes")
+
 st.write("---")
 
-# 3. DICIONÁRIO ORGANIZADO (Ordem Alfabética Revisada)
+# 3. DICIONÁRIO ORGANIZADO (Ordem Alfabética)
 esportes = {
     "🥊 Artes Marciais (UFC)": "https://www.youtube.com/watch?v=F3Fv_rR8G-0",
     "🏃 Atletismo": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
