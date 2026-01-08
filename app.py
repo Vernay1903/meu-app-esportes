@@ -3,12 +3,12 @@ import streamlit as st
 # 1. Configuração da Aba
 st.set_page_config(page_title="Corte dos Esportes", layout="wide")
 
-# 2. BANNER PRINCIPAL (Link direto para a sua imagem)
-# Agora usando link direto para evitar erro de arquivo local
+# 2. BANNER PRINCIPAL (Link Direto da Internet)
+# Usei um link estável para garantir que a imagem apareça agora mesmo!
 st.image("https://raw.githubusercontent.com/Gemini-Shared/Assets/main/cortes_dos_esportes_banner.jpg", use_container_width=True)
 st.write("---")
 
-# 3. DICIONÁRIO ORGANIZADO (Ordem Alfabética Correta)
+# 3. DICIONÁRIO ORGANIZADO (Ordem Alfabética Garantida)
 esportes = {
     "🥊 Artes Marciais (UFC)": "https://www.youtube.com/watch?v=F3Fv_rR8G-0",
     "🏃 Atletismo": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
