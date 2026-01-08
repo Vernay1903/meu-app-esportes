@@ -21,14 +21,14 @@ esportes = {
     "🏐 Vôlei de Praia": ["https://www.youtube.com/watch?v=dQw4w9WgXcQ"]
 }
 
-# 3. Sidebar (Navegação)
+# 3. Sidebar (Navegação com o novo texto)
 st.sidebar.image("https://cdn-icons-png.flaticon.com/512/857/857418.png", width=100)
 st.sidebar.title("📌 NAVEGAÇÃO:")
 escolha = st.sidebar.radio("Escolha o esporte:", list(esportes.keys()))
 
 st.sidebar.write("---")
 st.sidebar.subheader("📖 Sobre Nós")
-st.sidebar.info("O Corte dos Esportes é o seu portal definitivo para os melhores momentos do mundo esportivo. Trazemos os lances mais emocionantes e as análises mais precisas para você não perder nada!")
+st.sidebar.info("Somos apaixonados por esportes, aqui você acompanha seu esporte favorito e quem sabe pode virar fã de outro esporte")
 
 # 4. Área Principal
 st.title(f"{escolha}")
