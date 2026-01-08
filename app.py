@@ -4,11 +4,11 @@ import streamlit as st
 st.set_page_config(page_title="Corte dos Esportes", layout="wide")
 
 # 2. BANNER PRINCIPAL
-# O código vai procurar o arquivo 'banner.jpg' que você subiu no GitHub
+# Ajustei o nome para 'banner.jpg.png' que é como aparece no seu GitHub
 try:
-    st.image("banner.jpg", use_container_width=True)
+    st.image("banner.jpg.png", use_container_width=True)
 except Exception:
-    st.error("A imagem 'banner.jpg' ainda não foi detectada no repositório.")
+    st.error("A imagem ainda não foi detectada. Verifique se o nome no GitHub é banner.jpg.png")
 
 st.write("---")
 
