@@ -1,77 +1,64 @@
 import streamlit as st
 
-# 1. Configuração da página (Sempre no topo)
+# 1. Configuração da página
 st.set_page_config(page_title="Corte dos Esportes", layout="wide", page_icon="✂️")
 
-# 2. Estilo Visual - Fundo Escuro e Organização
+# 2. Estilo CSS Simplificado (Foco em corrigir o menu)
 st.markdown("""
     <style>
     .stApp { background-color: #0e1117; color: white; }
-    [data-testid="stSidebar"] { background-color: #1a1c23; min-width: 300px; }
-    
-    /* Título na Lateral */
+    [data-testid="stSidebar"] { 
+        background-color: #1a1c23; 
+    }
+    /* Estilo do Título Neon */
     .sidebar-title {
         color: #00d4ff;
-        font-size: 22px;
+        font-size: 24px;
         font-weight: bold;
         text-align: center;
         text-shadow: 0 0 10px #00d4ff;
-        margin-bottom: 20px;
+        padding: 20px 0px;
     }
-    
-    /* Box de Notícias */
-    .noticia-box {
-        background-color: #1a1c23;
-        padding: 15px;
-        border-left: 5px solid #00d4ff;
-        border-radius: 5px;
-        margin-top: 10px;
-    }
+    /* Ajuste para o texto não ficar colado */
+    .stSelectbox { margin-bottom: 20px; }
     </style>
     """, unsafe_allow_html=True)
 
-# 3. Dicionário de Vídeos (Links testados e funcionando)
+# 3. Dicionário de Esportes e Vídeos
 esportes_dict = {
     "⚽ Futebol": "https://www.youtube.com/watch?v=9Is976o_TMc",
     "🏀 Basquete": "https://www.youtube.com/watch?v=9_pYvYmP1Xg",
     "🥊 Artes Marciais (UFC)": "https://www.youtube.com/watch?v=v9U8O_UvH-U",
-    "🏎️ Automobilismo": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+    "🏎️ Automobilismo": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+    "🏐 Vôlei": "https://www.youtube.com/watch?v=mD07R_N9WpY"
 }
 
-# --- MONTAGEM DA BARRA LATERAL ---
+# --- BARRA LATERAL (Apenas o Título e a Navegação) ---
 st.sidebar.markdown('<p class="sidebar-title">✂️ CORTE DOS ESPORTES</p>', unsafe_allow_html=True)
 
-st.sidebar.subheader("🎯 Navegação")
-# O segredo para o menu não quebrar é garantir que ele tenha uma chave única (key)
-escolha = st.sidebar.selectbox("Escolha a Modalidade:", list(esportes_dict.keys()), key="menu_principal")
-
 st.sidebar.write("---")
-
-st.sidebar.subheader("📖 Sobre Nós")
-st.sidebar.info("Somos movidos pela paixão ao esporte, criando um ambiente para você acompanhar seu esporte favorito.")
+escolha = st.sidebar.selectbox("ESCOLHA A MODALIDADE:", list(esportes_dict.keys()))
+st.sidebar.write("---")
 
 # --- ÁREA PRINCIPAL ---
 st.image("Captura de tela 2026-01-08 092841.png", use_container_width=True)
 
 st.title(f"✂️ {escolha}")
-
-# Exibição do Vídeo
-video_url = esportes_dict[escolha]
-st.video(video_url)
+st.video(esportes_dict[escolha])
 
 st.write("---")
 
-# 4. SEÇÃO DE NOTÍCIAS
-st.header("📰 Plantão Corte dos Esportes")
-col1, col2 = st.columns(2)
+# Seção Sobre Nós e Notícias (Agora no corpo principal para não travar o menu)
+col_noticia1, col_noticia2 = st.columns(2)
 
-with col1:
-    st.markdown('<div class="noticia-box"><h4>🔥 Mercado da Bola</h4><p>As últimas transferências e rumores do futebol mundial.</p></div>', unsafe_allow_html=True)
+with col_noticia1:
+    st.subheader("📖 Sobre Nós")
+    st.info("Somos movidos pela paixão ao esporte, criando um ambiente para você acompanhar seu esporte favorito.")
 
-with col2:
-    st.markdown('<div class="noticia-box"><h4>🏀 NBA na Área</h4><p>Confira os resultados e quem brilhou nas quadras americanas.</p></div>', unsafe_allow_html=True)
+with col_noticia2:
+    st.subheader("📰 Plantão")
+    st.success("Mercado da Bola: Fique por dentro das últimas contratações do seu time!")
 
-st.sidebar.write("---")
 st.sidebar.write("Propriedade de: **Corte dos Esportes © 2026**")
 
 
