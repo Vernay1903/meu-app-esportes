@@ -1,9 +1,9 @@
 import streamlit as st
 
-# 1. Configuração da página (Deve ser a primeira linha)
+# 1. Configuração da página - SEMPRE a primeira linha
 st.set_page_config(page_title="Corte dos Esportes", layout="wide", page_icon="✂️")
 
-# 2. Dicionário de Vídeos - Usei links que SEMPRE funcionam para teste
+# 2. Dicionário de Vídeos (Links testados que permitem reprodução)
 esportes_dict = {
     "⚽ Futebol": "https://www.youtube.com/watch?v=9Is976o_TMc",
     "🏀 Basquete": "https://www.youtube.com/watch?v=9_pYvYmP1Xg",
@@ -12,44 +12,45 @@ esportes_dict = {
     "🏐 Vôlei": "https://www.youtube.com/watch?v=mD07R_N9WpY"
 }
 
-# --- BARRA LATERAL (Sem CSS para não quebrar) ---
+# --- BARRA LATERAL NATIVA (O segredo para não dar erro) ---
 st.sidebar.title("✂️ Corte dos Esportes")
-st.sidebar.divider()
+st.sidebar.write("---")
 
+# Menu de escolha sem estilização que cause sobreposição
 escolha = st.sidebar.selectbox(
-    "ESCOLHA A MODALIDADE:", 
-    list(esportes_dict.keys())
+    "SELECIONE O ESPORTE:", 
+    list(esportes_dict.keys()),
+    key="menu_v3"
 )
 
-st.sidebar.divider()
+st.sidebar.write("---")
 st.sidebar.subheader("📖 Sobre Nós")
 st.sidebar.info("Somos movidos pela paixão ao esporte, criando um ambiente para você acompanhar seu esporte favorito.")
 
 # --- ÁREA PRINCIPAL ---
-# Banner
+# Exibição do Banner
 st.image("Captura de tela 2026-01-08 092841.png", use_container_width=True)
 
-# Título do Esporte Escolhido
-st.title(f"✂️ {escolha}")
+# Título dinâmico
+st.header(f"Você está assistindo: {escolha}")
 
-# Exibição do Vídeo
+# Vídeo (Usando o link do dicionário)
 st.video(esportes_dict[escolha])
 
-st.divider()
+st.write("---")
 
-# Seção de Notícias usando blocos nativos (mais estáveis)
-st.header("📰 Plantão Corte dos Esportes")
+# Seção de Notícias usando colunas padrão
+st.subheader("📰 Plantão Corte dos Esportes")
 col1, col2 = st.columns(2)
 
 with col1:
-    st.success("**🔥 Mercado da Bola:** Acompanhe as últimas transferências.")
+    st.info("**🔥 Mercado da Bola:** Acompanhe as últimas transferências mundiais.")
 
 with col2:
-    st.warning("**🏀 Destaque NBA:** Veja os melhores lances da noite.")
+    st.info("**🏆 Destaques:** Confira os lances que marcaram a semana.")
 
-# Rodapé
-st.sidebar.divider()
-st.sidebar.caption("Propriedade de: Corte dos Esportes © 2026")
+st.sidebar.write("---")
+st.sidebar.caption("Corte dos Esportes © 2026")
 
 
 
