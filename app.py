@@ -26,13 +26,21 @@ esportes_dict = {
     "🏖️ Vôlei de Praia": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
 }
 
-# Barra Lateral Melhorada
+# --- BARRA LATERAL ---
 st.sidebar.markdown("# ✂️ CORTE DOS ESPORTES")
 st.sidebar.markdown("---")
-st.sidebar.subheader("Navegação")
+
+# Seção Sobre Nós
+st.sidebar.subheader("📖 Sobre Nós")
+st.sidebar.write("Somos movidos pela paixão ao esporte, criando um ambiente para você acompanhar seu esporte favorito e quem sabe virar fã de outro esporte.")
+
+st.sidebar.markdown("---")
+
+# Navegação
+st.sidebar.subheader("🎯 Navegação")
 escolha = st.sidebar.selectbox("Selecione a Modalidade:", list(esportes_dict.keys()))
 
-# Título Principal Dinâmico
+# --- ÁREA PRINCIPAL ---
 st.title(f"✂️ {escolha}")
 st.write(f"Confira os melhores momentos e análises de **{escolha.split(' ')[1]}**.")
 
