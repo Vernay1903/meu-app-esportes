@@ -11,7 +11,7 @@ except:
 
 st.write("---")
 
-# 3. BANCO DE DADOS
+# 3. BANCO DE DADOS (Notícias)
 conteudo = {
     "🥊 Artes Marciais (UFC)": {"titulo": "Poatan mira novo cinturão", "texto": "Preparação física intensa para o próximo desafio histórico."},
     "⚽ Futebol": {"titulo": "Mercado da bola aquecido", "texto": "Grandes clubes brasileiros negociam reforços para a temporada."},
@@ -24,12 +24,10 @@ outros = ["🏅 Esportes Olímpicos", "🏈 Futebol Americano", "🤾 Handebol",
 for item in outros:
     conteudo[item] = {"titulo": f"Destaques de {item}", "texto": f"Acompanhe os resultados e as notícias de {item}."}
 
-# 4. BARRA LATERAL (Sem as bolas e sem o erro "0")
-# Substituímos os ícones por um informativo útil
-st.sidebar.markdown("### 📅 Agenda do Dia")
-st.sidebar.caption("Principais eventos de hoje:")
-st.sidebar.write("• 20h: Final de Conferência (NBA)")
-st.sidebar.write("• 21h30: Copa Libertadores")
+# 4. BARRA LATERAL (Ajustada)
+st.sidebar.markdown("### 🗓️ Agenda do Dia") # Agenda que você gostou
+st.sidebar.write("• **20h:** Final de Conferência (NBA)")
+st.sidebar.write("• **21h30:** Copa Libertadores")
 
 st.sidebar.write("---")
 
@@ -37,9 +35,11 @@ st.sidebar.write("---")
 escolha = st.sidebar.radio("Navegue pelas notícias:", list(conteudo.keys()))
 
 st.sidebar.write("---")
-# Informativo sobre o portal
-st.sidebar.markdown("**Sobre o Corte**")
-st.sidebar.write("Informação rápida e cortes precisos do mundo esportivo.")
+
+# CORREÇÃO DO "SOBRE NÓS" - Escreva sua frase entre as aspas abaixo
+st.sidebar.markdown("### 📖 Sobre o Corte")
+frase_personalizada = "SUA FRASE AQUI - ESCREVA O TEXTO QUE DESEJA QUE APAREÇA SEM CORTES"
+st.sidebar.write(frase_personalizada)
 
 # 5. EXIBIÇÃO DA NOTÍCIA
 dados = conteudo[escolha]
