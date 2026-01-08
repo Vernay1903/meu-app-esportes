@@ -3,29 +3,38 @@ import streamlit as st
 # 1. Configuração da página
 st.set_page_config(page_title="Corte dos Esportes", layout="wide", page_icon="✂️")
 
-# 2. Seus vídeos e categorias (Links seguros)
+# 2. Dicionário Completo com 14 esportes em ordem alfabética
 esportes = {
-    "⚽ Futebol": "https://www.youtube.com/watch?v=9Is976o_TMc",
-    "🏀 Basquete": "https://www.youtube.com/watch?v=9_pYvYmP1Xg",
     "🥊 Artes Marciais (UFC)": "https://www.youtube.com/watch?v=v9U8O_UvH-U",
+    "🏃 Atletismo": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
     "🏎️ Automobilismo": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
-    "🏐 Vôlei": "https://www.youtube.com/watch?v=mD07R_N9WpY"
+    "🏀 Basquete": "https://www.youtube.com/watch?v=9_pYvYmP1Xg",
+    "🏅 Esportes Olímpicos": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+    "⚽ Futebol": "https://www.youtube.com/watch?v=9Is976o_TMc",
+    "🏈 Futebol Americano": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+    "🤾 Handebol": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+    "🛹 Skate": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+    "🏄 Surfe": "https://www.youtube.com/watch?v=l_S6L-Rno4U",
+    "🎾 Tênis": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+    "🏓 Tênis de Mesa": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+    "🏐 Vôlei": "https://www.youtube.com/watch?v=mD07R_N9WpY",
+    "🏖️ Vôlei de Praia": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
 }
 
-# --- BARRA LATERAL (Sidebar) ---
+# --- BARRA LATERAL ---
 st.sidebar.title("✂️ Corte dos Esportes")
 st.sidebar.markdown("---")
 
-# Mudamos para 'radio' com uma chave nova para forçar a limpeza do erro
+# Menu em formato 'radio' (Botões) - Esta é a única forma que não buga no seu navegador
 escolha = st.sidebar.radio(
     "🎯 NAVEGAÇÃO:",
     list(esportes.keys()),
-    key="menu_v5_final"
+    key="menu_v20_definitivo"
 )
 
 st.sidebar.markdown("---")
 
-# Seu texto original recuperado com sucesso
+# Seu texto original do Sobre Nós
 st.sidebar.subheader("📖 Sobre Nós")
 st.sidebar.info("Somos movidos pela paixão ao esporte, criando um ambiente para você acompanhar seu esporte favorito e quem sabe virar fã de outro esporte.")
 
@@ -40,18 +49,18 @@ st.video(esportes[escolha])
 
 st.markdown("---")
 
-# Seção de Notícias (Plantão) que já estava funcionando bem
+# Seção de Notícias (Plantão)
 st.header("📰 Plantão Corte dos Esportes")
 col1, col2 = st.columns(2)
 
 with col1:
-    st.success("**🔥 Mercado da Bola:** As últimas transferências do mundo do futebol.")
+    st.info("**🔥 Mercado da Bola:** As últimas transferências do mundo do futebol.")
 
 with col2:
-    st.warning("**🏀 NBA na Área:** Confira os resultados e destaques das quadras.")
+    st.info("**🏀 NBA na Área:** Confira os destaques das quadras.")
 
 st.sidebar.markdown("---")
-st.sidebar.caption("Corte dos Esportes © 2026")
+st.sidebar.caption("Propriedade de: Corte dos Esportes © 2026")
 
 
 
