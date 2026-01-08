@@ -24,16 +24,20 @@ outros = ["🏅 Esportes Olímpicos", "🏈 Futebol Americano", "🤾 Handebol",
 for item in outros:
     conteudo[item] = {"titulo": f"Destaques de {item}", "texto": f"Acompanhe os resultados e as notícias de {item}."}
 
-# 4. BARRA LATERAL (Nova Sugestão: Status do Sistema)
-st.sidebar.markdown("### 🟢 Portal Online")
-st.sidebar.caption("Última atualização: 2026")
+# 4. BARRA LATERAL (Sem as bolas e sem o erro "0")
+# Substituímos os ícones por um informativo útil
+st.sidebar.markdown("### 📅 Agenda do Dia")
+st.sidebar.caption("Principais eventos de hoje:")
+st.sidebar.write("• 20h: Final de Conferência (NBA)")
+st.sidebar.write("• 21h30: Copa Libertadores")
+
 st.sidebar.write("---")
 
 # Menu de Navegação
 escolha = st.sidebar.radio("Navegue pelas notícias:", list(conteudo.keys()))
 
 st.sidebar.write("---")
-# Espaço para "Sobre Nós" sem a caixa azul grande
+# Informativo sobre o portal
 st.sidebar.markdown("**Sobre o Corte**")
 st.sidebar.write("Informação rápida e cortes precisos do mundo esportivo.")
 
