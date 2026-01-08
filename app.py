@@ -25,14 +25,10 @@ esportes = {
     ]
 }
 
-# 3. Sidebar (Navegação e Sobre Nós)
+# 3. Sidebar (Navegação e Sobre Nós corrigido)
 st.sidebar.image("https://cdn-icons-png.flaticon.com/512/857/857418.png", width=100)
 st.sidebar.title("📌 NAVEGAÇÃO:")
-escolha = st.sidebar.radio("Escolha o esporte:", list(esportes.keys()))
-
-st.sidebar.write("---")
-st.sidebar.subheader("📖 Sobre Nós")
-st.sidebar.info("Somos apaixonados por esport
+escolha = st
 
 
 
