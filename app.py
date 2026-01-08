@@ -4,7 +4,6 @@ import streamlit as st
 st.set_page_config(page_title="Corte dos Esportes", layout="wide")
 
 # 2. BANNER PRINCIPAL
-# Usando o nome exato do arquivo que está no seu GitHub (conforme seu print)
 try:
     st.image("banner.jpg.png", use_container_width=True)
 except Exception:
@@ -12,7 +11,7 @@ except Exception:
 
 st.write("---")
 
-# 3. DICIONÁRIO COM LINKS QUE FUNCIONAM (TESTADOS)
+# 3. DICIONÁRIO DE ESPORTES (Links testados)
 esportes = {
     "🥊 Artes Marciais (UFC)": "https://www.youtube.com/watch?v=2S69v8X9X4c",
     "🏃 Atletismo": "https://www.youtube.com/watch?v=19JpUAtX-pM",
@@ -35,6 +34,10 @@ st.sidebar.image("https://cdn-icons-png.flaticon.com/512/857/857418.png", width=
 escolha = st.sidebar.radio("Escolha o esporte:", list(esportes.keys()))
 
 st.sidebar.write("---")
+# NOVIDADE: Espaço para você digitar a notícia do dia
+noticia_urgente = st.sidebar.text_input("Atualizar Plantão (Notícia):", "O mercado da bola está fervendo!")
+
+st.sidebar.write("---")
 st.sidebar.subheader("📖 Sobre Nós")
 st.sidebar.info("Somos apaixonados por esportes! Aqui você acompanha seu esporte favorito e fica por dentro dos melhores lances.")
 
@@ -46,15 +49,14 @@ st.video(esportes[escolha])
 st.write("---")
 st.subheader("🚨 Plantão Corte dos Esportes")
 
+# Destaque para a notícia que você digitar na lateral
+st.error(f"**ÚLTIMA HORA:** {noticia_urgente}")
+
 col1, col2 = st.columns(2)
-
 with col1:
-    st.info("**Transferências:** O mercado da bola está fervendo! Confira as últimas movimentações do seu time.")
     st.info("**Olimpíadas:** Preparativos para os próximos jogos seguem a todo vapor.")
-
 with col2:
     st.info("**Draft NFL:** Quem serão as próximas estrelas do Futebol Americano?")
-    st.info("**Resultados:** Confira o placar das rodadas deste final de semana em tempo real.")
 
 st.markdown("<br><center><p style='color: gray;'>© 2026 Corte dos Esportes - Todos os direitos reservados</p></center>", unsafe_allow_html=True)
 
