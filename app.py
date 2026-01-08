@@ -17,45 +17,46 @@ st.write("---")
 conteudo = {
     "🥊 Artes Marciais (UFC)": {
         "titulo": "Alex Poatan confirma mudança para os Pesos-Pesados",
-        "texto": "O campeão brasileiro revelou que iniciou o processo de ganho de massa para desafiar o topo da categoria no final de 2026, buscando um cinturão histórico."
+        "texto": "O campeão brasileiro revelou que iniciou o processo de ganho de massa para desafiar o topo da categoria no final de 2026."
     },
     "⚽ Futebol": {
         "titulo": "Mercado da Bola: Estrela europeia no radar do Brasil",
-        "texto": "Com o contrato chegando ao fim na Europa, um craque internacional sinalizou interesse em retornar ao Brasil, agitando os bastidores dos grandes clubes."
+        "texto": "Um craque internacional sinalizou interesse em retornar ao Brasil, agitando os bastidores dos grandes clubes."
     },
     "🏀 Basquete": {
         "titulo": "NBA: Astro marca 50 pontos e quebra recorde",
-        "texto": "Uma performance dominante garantiu a vitória e colocou o time como o principal favorito para as finais da Conferência Oeste nesta temporada."
-    }
+        "texto": "Uma performance dominante garantiu a vitória e colocou o time como o favorito para as finais da Conferência Oeste."
+    },
+    "🏎️ Automobilismo": {"titulo": "F1: Nova equipe no grid", "texto": "Novas tecnologias prometem acirrar a disputa entre as construtoras."},
+    "🏐 Vôlei": {"titulo": "Seleção Brasileira convoca novos talentos", "texto": "O foco é a renovação do elenco visando o novo ciclo olímpico."}
 }
 
-# Dados da Agenda por Categoria
+# Agendas específicas (pode alimentar com horários reais)
 agenda_eventos = {
     "⚽ Futebol": "• 21h30: Copa Libertadores (Oitavas)",
     "🏀 Basquete": "• 20h00: Playoffs da NBA",
     "🏐 Vôlei": "• 19h00: Superliga de Vôlei",
     "🥊 Artes Marciais (UFC)": "• 23h00: Card Principal UFC",
-    "Outros": "• Confira os horários locais para demais modalidades."
+    "🏎️ Automobilismo": "• 09h00: Treino Livre F1"
 }
 
-# Preenchimento automático para outras categorias
-outros_esportes = ["🏎️ Automobilismo", "🏐 Vôlei", "🏅 Esportes Olímpicos", "🏈 Futebol Americano", "🤾 Handebol", "🛹 Skate", "🏄 Surfe", "🎾 Tênis", "🏓 Tênis de Mesa", "🏃 Atletismo", "🏐 Vôlei de Praia"]
-for item in outros_esportes:
-    if item not in conteudo:
-        conteudo[item] = {"titulo": f"Destaques de {item}", "texto": "Acompanhe aqui as últimas notícias e resultados em tempo real."}
+# Criando a lista completa de esportes em ordem alfabética para os menus
+lista_esportes_ordenada = sorted(list(conteudo.keys()))
 
-# 4. BARRA LATERAL (Totalmente Organizada)
+# 4. BARRA LATERAL (Totalmente Organizada de A a Z)
 
-# AGENDA DO DIA COM SELECTBOX
+# AGENDA DO DIA (Sem "Outros" e em Ordem Alfabética)
 st.sidebar.markdown("### 🗓️ Agenda do Dia")
-esporte_agenda = st.sidebar.selectbox("Ver eventos de:", list(agenda_eventos.keys()), key="agenda_select")
-st.sidebar.write(agenda_eventos.get(esporte_agenda, agenda_eventos["Outros"]))
+# Usamos a mesma lista ordenada para a agenda
+esporte_agenda = st.sidebar.selectbox("Ver eventos de:", lista_esportes_ordenada, key="agenda_select")
+# Se não houver evento cadastrado, mostra uma mensagem padrão limpa
+st.sidebar.write(agenda_eventos.get(esporte_agenda, "• Sem eventos confirmados para hoje."))
 
 st.sidebar.write("---")
 
-# NAVEGAÇÃO DE NOTÍCIAS COM SELECTBOX
+# NAVEGAÇÃO DE NOTÍCIAS (Ordem Alfabética)
 st.sidebar.markdown("### 📰 Escolha o Esporte")
-escolha = st.sidebar.selectbox("Selecione a categoria:", list(conteudo.keys()), label_visibility="collapsed")
+escolha = st.sidebar.selectbox("Selecione a categoria:", lista_esportes_ordenada, label_visibility="collapsed")
 
 st.sidebar.write("---")
 
