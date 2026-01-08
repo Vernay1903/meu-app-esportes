@@ -13,33 +13,33 @@ except:
 
 st.write("---")
 
-# 3. BANCO DE DADOS (Notícias e Agenda Fixa)
+# 3. BANCO DE DADOS (Organizado de A a Z)
 conteudo = {
-    "🥊 Artes Marciais (UFC)": {"titulo": "Alex Poatan mira novo cinturão", "texto": "O campeão brasileiro revelou preparação intensa para o próximo desafio nos Pesos-Pesados."},
-    "🏎️ Automobilismo": {"titulo": "F1: Inovações Técnicas", "texto": "Novos carros prometem mais disputas e ultrapassagens na próxima temporada."},
-    "🏀 Basquete": {"titulo": "NBA: Astro marca 50 pontos", "texto": "Uma performance dominante colocou o time como favorito para as finais da Conferência."},
-    "⚽ Futebol": {"titulo": "Mercado da Bola aquecido", "texto": "Grandes clubes brasileiros negociam reforços de peso para a temporada."},
-    "🏐 Vôlei": {"titulo": "Seleção Brasileira: Novos talentos", "texto": "Foco total na renovação do elenco visando o novo ciclo de competições."}
+    "🥊 Artes Marciais (UFC)": {"titulo": "Alex Poatan mira novo cinturão", "texto": "O campeão brasileiro revelou preparação intensa para o próximo desafio histórico."},
+    "🏎️ Automobilismo": {"titulo": "F1: Inovações Técnicas", "texto": "Novos carros prometem mais disputas e ultrapassagens."},
+    "🏀 Basquete": {"titulo": "NBA: Astro marca 50 pontos", "texto": "Uma performance dominante garantiu a vitória na noite de ontem."},
+    "⚽ Futebol": {"titulo": "Mercado da Bola aquecido", "texto": "Grandes clubes brasileiros negociam reforços para a temporada."},
+    "🏐 Vôlei": {"titulo": "Seleção Brasileira: Novos talentos", "texto": "Foco na renovação do elenco visando o novo ciclo mundial."}
 }
 
-# 4. BARRA LATERAL (Visual Limpo e Organizado)
+# 4. BARRA LATERAL (Limpa e Sem Menus Duplos)
 
-# TÍTULO DO MENU DE NOTÍCIAS
-st.sidebar.markdown("### 📰 Notícias")
-# Ordem alfabética sem o item "Outros"
-lista_ordenada = sorted(list(conteudo.keys()))
-escolha = st.sidebar.selectbox("Escolha um esporte para ler:", lista_ordenada)
-
-st.sidebar.write("---")
-
-# AGENDA DO DIA (Como lista simples, sem menu suspenso para não confundir)
+# AGENDA DO DIA (Lista simples, direta e elegante)
 st.sidebar.markdown("### 🗓️ Agenda do Dia")
 st.sidebar.write("• **19h00:** Superliga de Vôlei")
 st.sidebar.write("• **21h30:** Copa Libertadores")
 
 st.sidebar.write("---")
 
-# SOBRE NÓS (Sempre visível no final)
+# MENU DE NOTÍCIAS (Rádio original que você gostou)
+st.sidebar.markdown("### 📰 Notícias")
+# Gera a lista de A a Z sem o item "Outros"
+lista_limpa = sorted(list(conteudo.keys())) 
+escolha = st.sidebar.radio("Navegue pelos esportes:", lista_limpa)
+
+st.sidebar.write("---")
+
+# SOBRE NÓS (Texto fixo no final)
 st.sidebar.markdown("### 📖 Sobre Nós")
 st.sidebar.write("Criado para os apaixonados por esportes ficarem atualizados, com as noticias mais recentes sobre todos os esportes.")
 
