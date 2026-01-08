@@ -6,7 +6,7 @@ st.set_page_config(page_title="Corte dos Esportes", layout="wide", page_icon="�
 # Banner Principal
 st.image("Captura de tela 2026-01-08 092841.png", use_container_width=True)
 
-# Lista de Esportes com Ícones e Ordem Alfabética
+# Dicionário de Esportes e Vídeos
 esportes_dict = {
     "🥊 Artes Marciais (UFC)": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
     "🏎️ Automobilismo": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
@@ -26,19 +26,19 @@ esportes_dict = {
     "🏖️ Vôlei de Praia": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
 }
 
-# --- BARRA LATERAL ---
+# --- BARRA LATERAL (Sidebar) ---
 st.sidebar.markdown("# ✂️ CORTE DOS ESPORTES")
 st.sidebar.markdown("---")
 
-# Seção Sobre Nós
-st.sidebar.subheader("📖 Sobre Nós")
-st.sidebar.write("Somos movidos pela paixão ao esporte, criando um ambiente para você acompanhar seu esporte favorito e quem sabe virar fã de outro esporte.")
+# 1. Menu de Navegação primeiro (para não cobrir o texto)
+st.sidebar.subheader("🎯 Navegação")
+escolha = st.sidebar.selectbox("Escolha a Modalidade:", list(esportes_dict.keys()))
 
 st.sidebar.markdown("---")
 
-# Navegação
-st.sidebar.subheader("🎯 Navegação")
-escolha = st.sidebar.selectbox("Selecione a Modalidade:", list(esportes_dict.keys()))
+# 2. Seção Sobre Nós logo abaixo
+st.sidebar.subheader("📖 Sobre Nós")
+st.sidebar.info("Somos movidos pela paixão ao esporte, criando um ambiente para você acompanhar seu esporte favorito e quem sabe virar fã de outro esporte.")
 
 # --- ÁREA PRINCIPAL ---
 st.title(f"✂️ {escolha}")
@@ -50,6 +50,8 @@ st.write("---")
 st.markdown(f"### 📺 Último Corte: {escolha}")
 st.video(esportes_dict[escolha]) 
 
-# Rodapé da Barra Lateral
+# Rodapé
 st.sidebar.write("---")
-st.sidebar.info("Propriedade de: **Corte dos Esportes © 2026**")
+st.sidebar.write("Propriedade de: **Corte dos Esportes © 2026**")
+
+
