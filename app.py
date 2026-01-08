@@ -3,13 +3,16 @@ import streamlit as st
 # 1. Configuração da Aba
 st.set_page_config(page_title="Corte dos Esportes", layout="wide")
 
-# 2. BANNER PRINCIPAL (Link de internet confiável)
-# Usei uma imagem de esportes genérica de alta qualidade que funciona sempre
-st.image("https://images.unsplash.com/photo-1461896836934-ffe607ba8211?q=80&w=2070&auto=format&fit=crop", use_container_width=True)
-st.markdown("<h1 style='text-align: center;'>✂️ Corte dos Esportes</h1>", unsafe_allow_html=True)
+# 2. BANNER PRINCIPAL
+# O código vai procurar o arquivo 'banner.jpg' que você subiu no GitHub
+try:
+    st.image("banner.jpg", use_container_width=True)
+except Exception:
+    st.error("A imagem 'banner.jpg' ainda não foi detectada no repositório.")
+
 st.write("---")
 
-# 3. DICIONÁRIO ORGANIZADO (Ordem Alfabética Correta)
+# 3. DICIONÁRIO EM ORDEM ALFABÉTICA
 esportes = {
     "🥊 Artes Marciais (UFC)": "https://www.youtube.com/watch?v=F3Fv_rR8G-0",
     "🏃 Atletismo": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
