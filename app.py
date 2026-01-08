@@ -11,67 +11,44 @@ except:
 
 st.write("---")
 
-# 3. BANCO DE DADOS (Apenas Texto e Vídeo)
+# 3. BANCO DE DADOS
 conteudo = {
-    "🥊 Artes Marciais (UFC)": {
-        "titulo": "Poatan mira novo cinturão histórico",
-        "texto": "O campeão brasileiro planeja buscar o terceiro cinturão em 2026. A preparação física já começou para o próximo desafio.",
-        "video": "https://www.youtube.com/watch?v=2S69v8X9X4c"
-    },
-    "⚽ Futebol": {
-        "titulo": "Janela de transferências movimenta milhões",
-        "texto": "Clubes brasileiros e europeus iniciam negociações para reforçar seus elencos para a próxima temporada.",
-        "video": "https://www.youtube.com/watch?v=ra6ZalwC19c"
-    },
-    "🏀 Basquete": {
-        "titulo": "NBA: Play-offs com duelos de gigantes",
-        "texto": "A disputa pela conferência oeste está mais acirrada do que nunca, com grandes estrelas brilhando em quadra.",
-        "video": "https://www.youtube.com/watch?v=9_pYvYmP1Xg"
-    },
-    "🏎️ Automobilismo": {
-        "titulo": "F1: Mudanças técnicas prometem mais velocidade",
-        "texto": "Novas regulamentações aerodinâmicas devem tornar as ultrapassagens mais frequentes nesta temporada.",
-        "video": "https://www.youtube.com/watch?v=MIsunv9vW6I"
-    },
-    "🏃 Atletismo": {
-        "titulo": "Promessas brilham nos treinos",
-        "texto": "A nova geração de velocistas apresenta tempos impressionantes e promete pódios nas próximas competições.",
-        "video": "https://www.youtube.com/watch?v=19JpUAtX-pM"
-    }
+    "🥊 Artes Marciais (UFC)": {"titulo": "Poatan mira novo cinturão", "texto": "Preparação física intensa para o próximo desafio histórico."},
+    "⚽ Futebol": {"titulo": "Mercado da bola aquecido", "texto": "Grandes clubes brasileiros negociam reforços para a temporada."},
+    "🏀 Basquete": {"titulo": "NBA: Emoção nos Play-offs", "texto": "Duelos de gigantes definem os favoritos ao título este ano."},
+    "🏎️ Automobilismo": {"titulo": "F1: Inovações Técnicas", "texto": "Novos carros prometem mais disputas e ultrapassagens."},
+    "🏃 Atletismo": {"titulo": "Velocistas batem recordes", "texto": "Brasileiros se destacam nos treinos para o mundial."}
 }
 
-# Outros esportes do menu original
-outros = ["🏅 Esportes Olímpicos", "🏈 Futebol Americano", "🤾 Handebol", "🛹 Skate", 
-          "🏄 Surfe", "🎾 Tênis", "🏓 Tênis de Mesa", "🏐 Vôlei", "🏐 Vôlei de Praia"]
-
+outros = ["🏅 Esportes Olímpicos", "🏈 Futebol Americano", "🤾 Handebol", "🛹 Skate", "🏄 Surfe", "🎾 Tênis", "🏓 Tênis de Mesa", "🏐 Vôlei", "🏐 Vôlei de Praia"]
 for item in outros:
-    conteudo[item] = {
-        "titulo": f"Destaques de {item}",
-        "texto": f"Confira aqui as últimas atualizações, resultados e curiosidades sobre o mundo de {item}.",
-        "video": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
-    }
+    conteudo[item] = {"titulo": f"Destaques de {item}", "texto": f"Acompanhe os resultados e as notícias de {item}."}
 
-# 4. BARRA LATERAL (Menu)
-st.sidebar.image("https://cdn-icons-png.flaticon.com/512/857/857418.png", width=80)
-escolha = st.sidebar.radio("Escolha a categoria:", list(conteudo.keys()))
+# 4. BARRA LATERAL (Nova Sugestão: Status do Sistema)
+st.sidebar.markdown("### 🟢 Portal Online")
+st.sidebar.caption("Última atualização: 2026")
+st.sidebar.write("---")
 
-# 5. EXIBIÇÃO DA NOTÍCIA (Layout limpo e sem o "0")
+# Menu de Navegação
+escolha = st.sidebar.radio("Navegue pelas notícias:", list(conteudo.keys()))
+
+st.sidebar.write("---")
+# Espaço para "Sobre Nós" sem a caixa azul grande
+st.sidebar.markdown("**Sobre o Corte**")
+st.sidebar.write("Informação rápida e cortes precisos do mundo esportivo.")
+
+# 5. EXIBIÇÃO DA NOTÍCIA
 dados = conteudo[escolha]
-st.header(f"{escolha}") # Fogo removido conforme pedido anterior
-
-# Mostra apenas o título e o texto da notícia de forma centralizada ou expandida
+st.header(f"{escolha}")
 st.subheader(dados["titulo"])
 st.write(dados["texto"])
 
 st.write("---")
-
-# Vídeo como complemento
 with st.expander("📺 Ver Vídeo Relacionado"):
-    st.video(dados["video"])
+    st.video("https://www.youtube.com/watch?v=dQw4w9WgXcQ")
 
-# 6. RODAPÉ - PLANTÃO
-st.subheader("🚨 Plantão Corte dos Esportes")
-st.error("**ÚLTIMA HORA:** Mercado da bola agita os bastidores hoje!")
+# 6. RODAPÉ
+st.error("**PLANTÃO:** Novas contratações confirmadas para o campeonato nacional!")
 st.markdown("<center><p style='color: gray;'>© 2026 Corte dos Esportes</p></center>", unsafe_allow_html=True)
 
 
