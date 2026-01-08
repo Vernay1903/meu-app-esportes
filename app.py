@@ -5,7 +5,7 @@ import pandas as pd
 st.set_page_config(page_title="Corte dos Esportes", layout="wide", page_icon="✂️")
 
 # Banner Principal - AGORA USANDO SUA IMAGEM OFICIAL
-st.image("Gemini_Generated_Image_kj7s1zkj7s1zkj7s.png", use_container_width=True)
+st.image("Captura de tela 2026-01-08 092841.png", use_container_width=True)
 
 # Barra Lateral
 st.sidebar.title("✂️ Menu Principal")
