@@ -11,7 +11,7 @@ except Exception:
 
 st.write("---")
 
-# 3. DICIONÁRIO DE ESPORTES (Links testados)
+# 3. DICIONÁRIO DE ESPORTES (Links revisados para evitar bloqueios)
 esportes = {
     "🥊 Artes Marciais (UFC)": "https://www.youtube.com/watch?v=2S69v8X9X4c",
     "🏃 Atletismo": "https://www.youtube.com/watch?v=19JpUAtX-pM",
@@ -29,13 +29,9 @@ esportes = {
     "🏐 Vôlei de Praia": "https://www.youtube.com/watch?v=u6r6uXyS-vM"
 }
 
-# 4. BARRA LATERAL
+# 4. BARRA LATERAL (Agora sem a caixa de texto)
 st.sidebar.image("https://cdn-icons-png.flaticon.com/512/857/857418.png", width=80)
 escolha = st.sidebar.radio("Escolha o esporte:", list(esportes.keys()))
-
-st.sidebar.write("---")
-# NOVIDADE: Espaço para você digitar a notícia do dia
-noticia_urgente = st.sidebar.text_input("Atualizar Plantão (Notícia):", "O mercado da bola está fervendo!")
 
 st.sidebar.write("---")
 st.sidebar.subheader("📖 Sobre Nós")
@@ -49,8 +45,9 @@ st.video(esportes[escolha])
 st.write("---")
 st.subheader("🚨 Plantão Corte dos Esportes")
 
-# Destaque para a notícia que você digitar na lateral
-st.error(f"**ÚLTIMA HORA:** {noticia_urgente}")
+# Para trocar a notícia, basta editar o texto entre as aspas abaixo:
+noticia_estatica = "O mercado da bola está fervendo! Confira as últimas movimentações."
+st.error(f"**ÚLTIMA HORA:** {noticia_estatica}")
 
 col1, col2 = st.columns(2)
 with col1:
