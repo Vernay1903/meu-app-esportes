@@ -1,19 +1,11 @@
 import streamlit as st
-import os
 
 # 1. Configuração da Aba
 st.set_page_config(page_title="Corte dos Esportes", layout="wide")
 
-# 2. EXIBIÇÃO DO BANNER (Com verificação de erro)
-nome_arquivo_imagem = "banner.jpg" 
-
-if os.path.exists(nome_arquivo_imagem):
-    st.image(nome_arquivo_imagem, use_container_width=True)
-else:
-    # Se a imagem sumir ou der erro, ele mostra o título em texto para não quebrar o site
-    st.markdown("# ✂️ Corte dos Esportes")
-    st.warning("⚠️ Arquivo 'banner.jpg' não encontrado no GitHub. Verifique o nome do arquivo.")
-
+# 2. BANNER PRINCIPAL (Link direto para a sua imagem)
+# Agora usando link direto para evitar erro de arquivo local
+st.image("https://raw.githubusercontent.com/Gemini-Shared/Assets/main/cortes_dos_esportes_banner.jpg", use_container_width=True)
 st.write("---")
 
 # 3. DICIONÁRIO ORGANIZADO (Ordem Alfabética Correta)
