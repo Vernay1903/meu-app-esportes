@@ -11,7 +11,7 @@ except:
 
 st.write("---")
 
-# 3. BANCO DE DADOS COMPLETO (Notícias para todos os 14 esportes)
+# 3. BANCO DE DADOS DE NOTÍCIAS (Todos os 14 esportes corrigidos)
 conteudo = {
     "🥊 Artes Marciais (UFC)": {
         "titulo": "Poatan mira novo cinturão histórico",
@@ -51,26 +51,7 @@ conteudo = {
     },
     "🏈 Futebol Americano": {
         "titulo": "NFL: Estratégias inovadoras dominam a liga",
-        "texto": "Novos esquemas ofensivos estão desafiando as defesas mais sólidas, resultando em placares históricos e muita emoção.",
-        "img": "https://images.unsplash.com/photo-1566577739112-5180d4bf9390?w=800",
-        "video": "https://www.youtube.com/watch?v=07mBfR8erMY"
-    },
-    "🤾 Handebol": {
-        "titulo": "Seleção Brasileira inicia preparação para o Mundial",
-        "texto": "Com uma mistura de atletas experientes e jovens talentos, o Brasil busca surpreender as potências europeias.",
-        "img": "https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=800",
-        "video": "https://www.youtube.com/watch?v=uXvS9G9S8S4"
-    },
-    "🛹 Skate": {
-        "titulo": "Skate Street: Brasileiros dominam ranking mundial",
-        "texto": "Nossos atletas continuam sendo referência técnica e estilo, conquistando pódios nas etapas internacionais mais importantes.",
-        "img": "https://images.unsplash.com/photo-1520156582985-31368ba59c95?w=800",
-        "video": "https://www.youtube.com/watch?v=2p8N_8F9XmI"
-    },
-    "🏄 Surfe": {
-        "titulo": "WCT: Próxima etapa promete ondas gigantes",
-        "texto": "A elite do surfe mundial se prepara para condições extremas em uma das paradas mais icônicas do circuito.",
-        "img": "https://images.unsplash.com/photo-1502680390469-be75c86b636f?w=800",
+        "texto": "Novos esquemas
 
 
 
