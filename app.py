@@ -1,5 +1,6 @@
 import streamlit as st
 import datetime
+import urllib.parse
 
 # 1. Configuração da Aba
 st.set_page_config(page_title="Corte dos Esportes", layout="wide")
@@ -12,7 +13,7 @@ except:
 
 st.write("---")
 
-# 3. BANCO DE DADOS (Notícias Bombásticas de Hoje)
+# 3. BANCO DE DADOS (Notícias)
 conteudo = {
     "🥊 Artes Marciais (UFC)": {
         "titulo": "Alex Poatan confirma mudança para os Pesos-Pesados",
@@ -36,28 +37,23 @@ conteudo = {
     }
 }
 
-# Preenchimento para as demais categorias
 outros = ["🏅 Esportes Olímpicos", "🏈 Futebol Americano", "🤾 Handebol", "🛹 Skate", "🏄 Surfe", "🎾 Tênis", "🏓 Tênis de Mesa", "🏃 Atletismo", "🏐 Vôlei de Praia"]
 for item in outros:
     if item not in conteudo:
         conteudo[item] = {"titulo": f"Destaques de {item}", "texto": f"Acompanhe aqui as últimas atualizações e resultados de {item} em tempo real."}
 
 # 4. BARRA LATERAL
-st.sidebar.markdown("### 🗓️ Agenda do Dia") #
+st.sidebar.markdown("### 🗓️ Agenda do Dia")
 st.sidebar.write("• **19h00:** Superliga de Vôlei")
 st.sidebar.write("• **21h30:** Copa Libertadores (Oitavas)")
 
 st.sidebar.write("---")
-
-# Menu de Navegação
 escolha = st.sidebar.radio("Navegue pelas notícias:", list(conteudo.keys()))
-
 st.sidebar.write("---")
 
-# SEÇÃO SOBRE NÓS
-st.sidebar.markdown("### 📖 Sobre Nós") #
-frase_site = "Criado para os apaixonados por esportes ficarem atualizados, com as noticias mais recentes sobre todos os esportes." #
-st.sidebar.write(frase_site) #
+st.sidebar.markdown("### 📖 Sobre Nós")
+frase_site = "Criado para os apaixonados por esportes ficarem atualizados, com as noticias mais recentes sobre todos os esportes."
+st.sidebar.write(frase_site)
 
 # 5. EXIBIÇÃO DA NOTÍCIA
 dados = conteudo[escolha]
@@ -65,11 +61,16 @@ st.header(f"{escolha}")
 st.subheader(dados["titulo"])
 st.write(dados["texto"])
 
+# Lógica do Botão de Compartilhar
+texto_share = f"Confira esta notícia no Corte dos Esportes: {dados['titulo']} - {dados['texto']}"
+link_whatsapp = f"https://wa.me/?text={urllib.parse.quote(texto_share)}"
+st.link_button("📲 Compartilhar no WhatsApp", link_whatsapp)
+
 st.write("---")
 with st.expander("📺 Ver Vídeo Relacionado"):
     st.video("https://www.youtube.com/watch?v=dQw4w9WgXcQ")
 
-# 6. RODAPÉ PROFISSIONAL
+# 6. RODAPÉ
 data_hoje = datetime.date.today().year
 st.markdown(f"<center><p style='color: gray;'>© {data_hoje} Corte dos Esportes | www.cortedosesportes.com.br</p></center>", unsafe_allow_html=True)
 
