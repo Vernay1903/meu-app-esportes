@@ -3,45 +3,50 @@ import streamlit as st
 # 1. Configuração da página
 st.set_page_config(page_title="Corte dos Esportes", layout="wide", page_icon="✂️")
 
-# 2. Dicionário de Esportes e Vídeos
+# 2. Dicionário de Esportes e Vídeos (Lista Completa)
 esportes = {
-    "🥊 Artes Marciais (UFC)": [
-        "https://www.youtube.com/watch?v=v9U8O_UvH-U"
-    ],
-    "🏃 Atletismo": [
-        "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
-    ],
-    "🏎️ Automobilismo": [
-        "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
-    ],
-    "🏀 Basquete": [
-        "https://www.youtube.com/watch?v=9_pYvYmP1Xg"
-    ],
-    "🏅 Esportes Olímpicos": [
-        "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
-    ],
-    "⚽ Futebol": [
-        "https://www.youtube.com/watch?v=9Is976o_TMc"
-    ]
+    "🥊 Artes Marciais (UFC)": ["https://www.youtube.com/watch?v=v9U8O_UvH-U"],
+    "🏃 Atletismo": ["https://www.youtube.com/watch?v=dQw4w9WgXcQ"],
+    "🏎️ Automobilismo": ["https://www.youtube.com/watch?v=dQw4w9WgXcQ"],
+    "🏀 Basquete": ["https://www.youtube.com/watch?v=9_pYvYmP1Xg"],
+    "🏅 Esportes Olímpicos": ["https://www.youtube.com/watch?v=dQw4w9WgXcQ"],
+    "⚽ Futebol": ["https://www.youtube.com/watch?v=9Is976o_TMc"],
+    "🏈 Futebol Americano": ["https://www.youtube.com/watch?v=dQw4w9WgXcQ"],
+    "🤾 Handebol": ["https://www.youtube.com/watch?v=dQw4w9WgXcQ"],
+    "🛹 Skate": ["https://www.youtube.com/watch?v=dQw4w9WgXcQ"],
+    "🏄 Surfe": ["https://www.youtube.com/watch?v=dQw4w9WgXcQ"],
+    "🎾 Tênis": ["https://www.youtube.com/watch?v=dQw4w9WgXcQ"],
+    "🏓 Tênis de Mesa": ["https://www.youtube.com/watch?v=dQw4w9WgXcQ"],
+    "🏐 Vôlei": ["https://www.youtube.com/watch?v=dQw4w9WgXcQ"],
+    "🏐 Vôlei de Praia": ["https://www.youtube.com/watch?v=dQw4w9WgXcQ"]
 }
 
-# 3. Interface do Site
+# 3. Sidebar (Navegação)
+st.sidebar.image("https://cdn-icons-png.flaticon.com/512/857/857418.png", width=100)
 st.sidebar.title("📌 NAVEGAÇÃO:")
 escolha = st.sidebar.radio("Escolha o esporte:", list(esportes.keys()))
 
+st.sidebar.write("---")
+st.sidebar.subheader("📖 Sobre Nós")
+st.sidebar.info("O Corte dos Esportes é o seu portal definitivo para os melhores momentos do mundo esportivo. Trazemos os lances mais emocionantes e as análises mais precisas para você não perder nada!")
+
+# 4. Área Principal
 st.title(f"{escolha}")
 st.subheader("🔥 Último Corte")
 
-# Pega o primeiro vídeo da lista do esporte escolhido
+# Player de Vídeo Principal
 lista_videos = esportes[escolha]
-st.video(lista_videos[0])
+if lista_videos:
+    st.video(lista_videos[0])
 
-# 4. Histórico (se houver mais de um vídeo)
+# 5. Histórico (se houver mais vídeos na lista)
 if len(lista_videos) > 1:
     st.write("---")
     st.subheader("📜 Histórico de Vídeos")
-    for vid in lista_videos[1:]:
-        st.video(vid)
+    cols = st.columns(2)
+    for i, vid in enumerate(lista_videos[1:]):
+        with cols[i % 2]:
+            st.video(vid)
 
 
 
