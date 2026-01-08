@@ -21,30 +21,30 @@ esportes = {
     "🏖️ Vôlei de Praia": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
 }
 
-# --- BARRA LATERAL ---
+# --- BARRA LATERAL (Sidebar) ---
 st.sidebar.title("✂️ Corte dos Esportes")
 st.sidebar.markdown("---")
 
-# Menu em formato 'radio' (Botões) - Esta é a única forma que não buga no seu navegador
+# Menu em formato 'radio' que resolveu o problema visual
 escolha = st.sidebar.radio(
     "🎯 NAVEGAÇÃO:",
     list(esportes.keys()),
-    key="menu_v20_definitivo"
+    key="menu_versao_final_estavel"
 )
 
 st.sidebar.markdown("---")
 
-# Seu texto original do Sobre Nós
+# Seu texto original do Sobre Nós (Restaurado e Protegido)
 st.sidebar.subheader("📖 Sobre Nós")
 st.sidebar.info("Somos movidos pela paixão ao esporte, criando um ambiente para você acompanhar seu esporte favorito e quem sabe virar fã de outro esporte.")
 
 # --- ÁREA PRINCIPAL ---
-# Banner
+# Banner Principal
 st.image("Captura de tela 2026-01-08 092841.png", use_container_width=True)
 
 st.title(f"✂️ {escolha}")
 
-# Player de Vídeo
+# Exibição do Vídeo
 st.video(esportes[escolha])
 
 st.markdown("---")
