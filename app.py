@@ -1,10 +1,10 @@
 import streamlit as st
 import urllib.parse
 
-# 1. Configuração de Layout
+# 1. Configuração da Página
 st.set_page_config(page_title="Corte dos Esportes", layout="wide")
 
-# 2. Banner Principal
+# 2. Banner
 try:
     st.image("banner.jpg.png", use_container_width=True)
 except:
@@ -12,44 +12,44 @@ except:
 
 st.write("---")
 
-# 3. Banco de Dados com TODOS os esportes (Organizado internamente)
+# 3. Banco de Dados (Todos os 14 esportes das suas imagens)
 noticias = {
-    "⚽ Futebol": {"titulo": "Mercado da Bola: Estrela europeia no radar", "texto": "Um craque internacional sinalizou interesse em retornar ao Brasil."},
-    "🏀 Basquete": {"titulo": "NBA: Astro marca 50 pontos e quebra recorde", "texto": "Uma performance dominante garantiu a vitória na noite de ontem."},
+    "🥊 Artes Marciais (UFC)": {"titulo": "Alex Poatan mira novo cinturão", "texto": "O campeão brasileiro revelou preparação intensa para o próximo desafio histórico."},
+    "🏃 Atletismo": {"titulo": "Recordes mundiais superados", "texto": "A nova temporada de atletismo começa com marcas históricas na pista."},
     "🏎️ Automobilismo": {"titulo": "F1: Inovações Técnicas", "texto": "Novos carros prometem mais disputas e ultrapassagens."},
-    "🥊 Artes Marciais (UFC)": {"titulo": "Alex Poatan confirma mudança para os Pesos-Pesados", "texto": "O campeão brasileiro revelou o processo de ganho de massa para 2026."},
-    "🏐 Vôlei": {"titulo": "Superliga: Duelos decisivos", "texto": "A fase final promete jogos eletrizantes para a torcida."},
-    "🏅 Esportes Olímpicos": {"titulo": "Preparação para o ciclo 2028", "texto": "Atletas brasileiros intensificam treinos para as próximas competições."},
+    "🏀 Basquete": {"titulo": "NBA: Astro marca 50 pontos", "texto": "Uma performance dominante garantiu a vitória na noite de ontem."},
+    "🏅 Esportes Olímpicos": {"titulo": "Preparação para 2028", "texto": "Atletas brasileiros intensificam treinos para o próximo ciclo."},
+    "⚽ Futebol": {"titulo": "Mercado da bola aquecido", "texto": "Grandes clubes brasileiros negociam reforços para a temporada."},
     "🏈 Futebol Americano": {"titulo": "NFL: Draft movimenta equipes", "texto": "As novas escolhas prometem mudar o equilíbrio de forças na liga."},
     "🤾 Handebol": {"titulo": "Final do campeonato nacional", "texto": "Um duelo emocionante definiu o grande campeão desta temporada."},
-    "🛹 Skate": {"titulo": "Circuito mundial em destaque", "texto": "Manobras incríveis marcam a etapa brasileira do mundial."},
+    "🛹 Skate": {"titulo": "Circuito mundial em destaque", "texto": "Manobras incríveis marcam a etapa brasileira do mundial de skate."},
     "🏄 Surfe": {"titulo": "WCT: Ondas gigantes no Hawaii", "texto": "Os melhores surfistas do mundo enfrentam condições extremas."},
-    "🎾 Tênis": {"titulo": "Grand Slam: Favoritos avançam", "texto": "As quadras recebem os maiores astros da atualidade."},
-    "🏓 Tênis de Mesa": {"titulo": "Destaques do ranking mundial", "texto": "Brasileiros sobem posições e incomodam a elite mundial."},
-    "🏃 Atletismo": {"titulo": "Recordes mundiais superados", "texto": "A nova temporada de atletismo começa com marcas históricas."},
+    "🎾 Tênis": {"titulo": "Grand Slam: Favoritos avançam", "texto": "As quadras de tênis recebem os maiores astros da atualidade."},
+    "🏓 Tênis de Mesa": {"titulo": "Destaques do ranking mundial", "texto": "Brasileiros sobem posições e incomodam a elite do esporte."},
+    "🏐 Vôlei": {"titulo": "Superliga: Duelos decisivos", "texto": "A fase final da Superliga promete jogos eletrizantes para a torcida."},
     "🏐 Vôlei de Praia": {"titulo": "Circuito na areia", "texto": "As duplas brasileiras dominam as competições internacionais."}
 }
 
-# 4. BARRA LATERAL (Layout Idêntico à Foto 1)
+# 4. Barra Lateral (Layout Validado)
 
-# Agenda do Dia (Texto simples no topo)
+# Agenda (Texto limpo no topo)
 st.sidebar.markdown("### 🗓️ Agenda do Dia")
 st.sidebar.write("• **19h00:** Superliga de Vôlei")
 st.sidebar.write("• **21h30:** Copa Libertadores")
 
 st.sidebar.write("---")
 
-# Menu de Notícias (Radio com Ordem Alfabética Forçada)
+# Menu de Notícias (Radio de A a Z)
 st.sidebar.markdown("### 📰 Notícias")
 st.sidebar.write("**Navegue pelas notícias:**")
 
-# VALIDAÇÃO: Criando a lista alfabética antes de exibir o radio
-lista_ordenada = sorted(list(noticias.keys()))
+# GARANTE A ORDEM ALFABÉTICA REAL
+lista_abc = sorted(list(noticias.keys()))
 
-# Exibição via Radio (Bolinhas) e SEM Selectbox
+# Seleção via Radio (bolinhas)
 escolha = st.sidebar.radio(
     "Categorias", 
-    lista_ordenada, 
+    lista_abc, 
     label_visibility="collapsed"
 )
 
@@ -57,18 +57,18 @@ st.sidebar.write("---")
 
 # Sobre Nós
 st.sidebar.markdown("### 📖 Sobre Nós")
-st.sidebar.write("Criado para os apaixonados por esportes ficarem atualizados, com as notícias mais recentes.")
+st.sidebar.write("Criado para os apaixonados por esportes ficarem atualizados, com as notícias mais recentes sobre todos os esportes.")
 
-# 5. Conteúdo Principal
+# 5. Conteúdo Central
 dados = noticias[escolha]
 st.header(f"{escolha}")
 st.subheader(dados["titulo"])
 st.write(dados["texto"])
 
-# Botão Compartilhar WhatsApp
+# Botão Compartilhar
 texto_zap = f"Confira no Corte dos Esportes: {dados['titulo']}"
-link_zap = f"https://wa.me/?text={urllib.parse.quote(texto_zap)}"
-st.link_button("📲 Compartilhar no WhatsApp", link_zap)
+link_final = f"https://wa.me/?text={urllib.parse.quote(texto_zap)}"
+st.link_button("📲 Compartilhar no WhatsApp", link_final)
 
 st.write("---")
 with st.expander("📺 Ver Vídeo Relacionado"):
