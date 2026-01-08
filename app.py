@@ -13,7 +13,7 @@ except:
 
 st.write("---")
 
-# 3. BANCO DE DADOS (Notícias)
+# 3. BANCO DE DADOS (Notícias e Agenda)
 conteudo = {
     "🥊 Artes Marciais (UFC)": {
         "titulo": "Alex Poatan confirma mudança para os Pesos-Pesados",
@@ -26,34 +26,40 @@ conteudo = {
     "🏀 Basquete": {
         "titulo": "NBA: Astro marca 50 pontos e quebra recorde",
         "texto": "Uma performance dominante garantiu a vitória e colocou o time como o principal favorito para as finais da Conferência Oeste nesta temporada."
-    },
-    "🏎️ Automobilismo": {
-        "titulo": "Fórmula 1: Nova equipe anuncia entrada oficial",
-        "texto": "O anúncio traz novas tecnologias e promete acirrar a disputa entre as construtoras, mudando o equilíbrio de forças atual no grid."
-    },
-    "🏐 Vôlei": {
-        "titulo": "Seleção Brasileira convoca novos talentos",
-        "texto": "O foco é a renovação do elenco visando o novo ciclo olímpico, trazendo jovens destaques da Superliga para o time principal."
     }
 }
 
+# Dados da Agenda por Categoria
+agenda_eventos = {
+    "⚽ Futebol": "• 21h30: Copa Libertadores (Oitavas)",
+    "🏀 Basquete": "• 20h00: Playoffs da NBA",
+    "🏐 Vôlei": "• 19h00: Superliga de Vôlei",
+    "🥊 Artes Marciais (UFC)": "• 23h00: Card Principal UFC",
+    "Outros": "• Confira os horários locais para demais modalidades."
+}
+
 # Preenchimento automático para outras categorias
-outros = ["🏅 Esportes Olímpicos", "🏈 Futebol Americano", "🤾 Handebol", "🛹 Skate", "🏄 Surfe", "🎾 Tênis", "🏓 Tênis de Mesa", "🏃 Atletismo", "🏐 Vôlei de Praia"]
-for item in outros:
+outros_esportes = ["🏎️ Automobilismo", "🏐 Vôlei", "🏅 Esportes Olímpicos", "🏈 Futebol Americano", "🤾 Handebol", "🛹 Skate", "🏄 Surfe", "🎾 Tênis", "🏓 Tênis de Mesa", "🏃 Atletismo", "🏐 Vôlei de Praia"]
+for item in outros_esportes:
     if item not in conteudo:
-        conteudo[item] = {"titulo": f"Destaques de {item}", "texto": "Acompanhe aqui as últimas atualizações e resultados em tempo real."}
+        conteudo[item] = {"titulo": f"Destaques de {item}", "texto": "Acompanhe aqui as últimas notícias e resultados em tempo real."}
 
-# 4. BARRA LATERAL (Layout Estabilizado)
+# 4. BARRA LATERAL (Totalmente Organizada)
+
+# AGENDA DO DIA COM SELECTBOX
 st.sidebar.markdown("### 🗓️ Agenda do Dia")
-st.sidebar.write("• **19h00:** Superliga de Vôlei")
-st.sidebar.write("• **21h30:** Copa Libertadores")
-st.sidebar.write("---")
-
-# MUDANÇA AQUI: Selectbox em vez de Radio para não desconfigurar
-st.sidebar.write("**Escolha o Esporte:**")
-escolha = st.sidebar.selectbox("Navegue pelas notícias:", list(conteudo.keys()), label_visibility="collapsed")
+esporte_agenda = st.sidebar.selectbox("Ver eventos de:", list(agenda_eventos.keys()), key="agenda_select")
+st.sidebar.write(agenda_eventos.get(esporte_agenda, agenda_eventos["Outros"]))
 
 st.sidebar.write("---")
+
+# NAVEGAÇÃO DE NOTÍCIAS COM SELECTBOX
+st.sidebar.markdown("### 📰 Escolha o Esporte")
+escolha = st.sidebar.selectbox("Selecione a categoria:", list(conteudo.keys()), label_visibility="collapsed")
+
+st.sidebar.write("---")
+
+# SEÇÃO SOBRE NÓS
 st.sidebar.markdown("### 📖 Sobre Nós")
 st.sidebar.write("Criado para os apaixonados por esportes ficarem atualizados, com as notícias mais recentes sobre todos os esportes.")
 
