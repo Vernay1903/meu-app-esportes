@@ -3,12 +3,12 @@ import streamlit as st
 # 1. Configuração da Aba
 st.set_page_config(page_title="Corte dos Esportes", layout="wide")
 
-# 2. TÍTULO NO TOPO
-st.markdown("# ✂️ Corte dos Esportes")
+# 2. BANNER PRINCIPAL (A imagem que você enviou)
+# Certifique-se de que o arquivo da imagem esteja na mesma pasta do seu script .py
+st.image("Captura de tela 2026-01-08 092841.jpg", use_container_width=True)
 st.write("---")
 
-# 3. DICIONÁRIO JÁ ORGANIZADO EM ORDEM ALFABÉTICA (Revisado)
-# A ordem segue: Ar -> At -> Au -> Ba -> Es -> Fu -> Fu -> Ha -> Sk -> Su -> Te -> Te -> Vo -> Vo
+# 3. DICIONÁRIO ORGANIZADO (Ordem Alfabética Revisada)
 esportes = {
     "🥊 Artes Marciais (UFC)": "https://www.youtube.com/watch?v=F3Fv_rR8G-0",
     "🏃 Atletismo": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
@@ -28,8 +28,6 @@ esportes = {
 
 # 4. BARRA LATERAL
 st.sidebar.image("https://cdn-icons-png.flaticon.com/512/857/857418.png", width=80)
-
-# Mantemos a ordem exata das chaves do dicionário acima
 escolha = st.sidebar.radio("Escolha o esporte:", list(esportes.keys()))
 
 st.sidebar.write("---")
