@@ -1,7 +1,5 @@
 import streamlit as st
-import json
 import urllib.parse
-from pathlib import Path
 import streamlit.components.v1 as components
 
 # ================== CONFIGURAÇÃO ==================
@@ -11,23 +9,24 @@ st.set_page_config(
     layout="wide"
 )
 
-# ================== CARREGAR DADOS ==================
-arquivo = Path("data/noticias.json")
-
-if not arquivo.exists():
-    st.error("❌ Arquivo data/noticias.json não encontrado.")
-    st.stop()
-
-with open(arquivo, "r", encoding="utf-8") as f:
-    noticias = json.load(f)
+# ================== DADOS (INLINE - SEM JSON) ==================
+noticias = {
+    "⚽ Futebol": {
+        "titulo": "Mercado da Bola: Estrela europeia no radar",
+        "texto": "Um craque internacional sinalizou interesse em retornar ao Brasil.",
+        "video": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+        "afiliado": "https://www.amazon.com.br/"
+    },
+    "🏀 Basquete": {
+        "titulo": "NBA: Astro marca 50 pontos",
+        "texto": "Atuação histórica colocou o time como favorito ao título.",
+        "video": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+        "afiliado": "https://www.netshoes.com.br/"
+    }
+}
 
 # ================== BANNER ==================
-banner = Path("assets/banner.png")
-if banner.exists():
-    st.image(str(banner), use_container_width=True)
-else:
-    st.title("✂️ Corte dos Esportes")
-
+st.title("✂️ Corte dos Esportes")
 st.markdown("## 📰 As principais notícias do esporte em um só lugar")
 st.write("---")
 
@@ -41,14 +40,41 @@ st.sidebar.markdown("### 📰 Notícias")
 categorias = sorted(noticias.keys())
 escolha = st.sidebar.radio("Categorias", categorias, label_visibility="collapsed")
 
-st.sidebar.write("---")
-st.sidebar.markdown("### 📖 Institucional")
-st.sidebar.page_link("pages/1_Sobre.py", label="Sobre")
-st.sidebar.page_link("pages/2_Contato.py", label="Contato")
-st.sidebar.page_link("pages/3_Politica_de_Privacidade.py", label="Política de Privacidade")
-st.sidebar.page_link("pages/4_Termos_de_Uso.py", label="Termos de Uso")
+# ================== CONTEÚDO ==================
+dados = noticias[escolha]
 
-# ================== CONTEÚ
+st.header(escolha)
+st.subheader(dados["titulo"])
+st.write(dados["texto"])
+
+# ================== ANÚNCIO ==================
+components.html("""
+<div style="width:100%;height:250px;background:#f2f2f2;
+display:flex;align-items:center;justify-content:center;font-weight:bold;">
+ESPAÇO PARA PUBLICIDADE
+</div>
+""", height=260)
+
+# ================== AFILIADO ==================
+st.markdown("### 🛒 Produto Relacionado")
+st.link_button("👉 Confira aqui", dados["afiliado"])
+
+# ================== WHATSAPP ==================
+texto_zap = f"Confira no Corte dos Esportes: {dados['titulo']}"
+link_zap = f"https://wa.me/?text={urllib.parse.quote(texto_zap)}"
+st.link_button("📲 Compartilhar no WhatsApp", link_zap)
+
+# ================== VÍDEO ==================
+with st.expander("📺 Ver vídeo relacionado"):
+    st.video(dados["video"])
+
+# ================== RODAPÉ ==================
+st.write("---")
+st.markdown(
+    "<center><small>© 2026 Corte dos Esportes | Todos os direitos reservados</small></center>",
+    unsafe_allow_html=True
+)
+
 
 
 
